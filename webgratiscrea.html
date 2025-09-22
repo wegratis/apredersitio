@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu Propia Web Gratis s</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #4f46e5;
+            --accent: #ec4899;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #06b6d4;
+            --premium: #8b5cf6;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem;
+                 border-radius: 10px;
+  max-width:800px;
+  margin: 90px auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+               border-radius: 10px;
+  max-width:800px;
+  margin: 90px auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .highlight h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Legal Section */
+        .legal-section {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .legal-section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .legal-content {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+        }
+
+        .legal-content h3 {
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .legal-content p {
+            margin-bottom: 1rem;
+        }
+
+        /* Planes Section */
+        .plans {
+            padding: 2rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            background-color: var(--primary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Colores específicos para cada botón */
+        .btn.basico { 
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+        }
+        
+        .btn.medium { 
+            background: linear-gradient(135deg, var(--warning) 0%, #d97706 100%);
+            color: #000;
+        }
+        
+        .btn.avanzado { 
+            background: linear-gradient(135deg, var(--info) 0%, #0891b2 100%);
+        }
+        
+        .btn.premium { 
+            background: linear-gradient(135deg, var(--premium) 0%, #7c3aed 100%);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 14px 24px;
+                font-size: 1rem;
+                min-width: 160px;
+            }
+            
+            .button-container {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .hero {
+                padding: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                min-width: 140px;
+                padding: 12px 20px;
+            }
+            
+            .legal-section, .plans {
+                padding: 1.5rem;
+            }
+        }
+/* Contenedor centrado */
+.contenedor {
+    display: flex;
+    justify-content: center; /* centrado horizontal */
+    align-items: center;     /* centrado vertical */
+    height: 100vh;           /* ocupa toda la altura de la pantalla */
+    background-color: #f0f0f0; /* fondo opcional para verlo mejor */
+}
+
+.btn-atras {
+    position: fixed;           
+    top:25px;                  
+    left: 50%;                 
+    transform: translate(-50%, -50%);
+
+    background-color: #3498db; 
+    color: white;              
+    font-size: 18px;           
+    padding: 10px 40px;        /* más ancho que alto */
+    border: none;
+    border-radius: 8px;        
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-atras:hover {
+    background-color: #2980b9; 
+    transform: translate(-50%, -50%) scale(1.05); 
+}
+
+ body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+      background-color: #f0f0f0; /* Color inicial de fondo */
+      transition: background-color 0.5s ease; /* Transición suave */
+    }
+
+    .video-container {
+      display: inline-block;
+      padding: 10px;
+      border: 5px solid #3498db; /* Color del marco inicial */
+      border-radius: 15px; /* Bordes redondeados */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      background-color: #ffffff; /* Fondo del contenedor */
+      transition: border-color 0.5s ease, background-color 0.5s ease;
+    }
+
+    video {
+      width: 500px; /* Ancho moderado */
+      height: auto;  /* Mantiene la proporción */
+      border-radius: 10px;
+    }
+
+    .change-color-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: #fff;
+      transition: background-color 0.3s;
+    }
+
+    .change-color-btn:hover {
+      background-color: #2980b9;
+    }
+  
+   /* Estilo para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Asegura que las celdas no tengan espacio entre ellas */
+    margin: 20px 0;
+    background-color: #f9f9f9; /* Fondo claro para la tabla */
+}
+
+/* Estilo para los encabezados de la tabla */
+th {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Texto blanco */
+    padding: 15px;
+    text-align: left;
+}
+
+/* Estilo para las celdas de la tabla */
+td {
+    padding: 12px;
+    border: 1px solid #ddd; /* Bordes suaves */
+    text-align: left;
+}
+
+/* Estilo para filas impares */
+tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Fondo gris claro para las filas impares */
+}
+
+/* Estilo para filas pares */
+tr:nth-child(even) {
+    background-color: #ffffff; /* Fondo blanco para las filas pares */
+}
+
+/* Estilo para el título de la tabla */
+caption {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+}
+
+/* Estilo para las listas dentro de las celdas */
+ul {
+    margin: 0;
+    padding-left: 20px; /* Sangría para las listas */
+}
+
+ul li {
+    margin-bottom: 8px; /* Espaciado entre los elementos de la lista */
+}
+
+/* Estilo para enlaces dentro de la tabla */
+a {
+    color: #007BFF; /* Color de los enlaces */
+    text-decoration: none; /* Quitar subrayado */
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayado cuando el cursor pasa sobre el enlace */
+}
+  
+
+    </style>
+</head>
+<body>
+
+<button class="btn-atras" onclick="location.href='index.html'">Volver atrás</button>
+<img src="logofotoweb.png" alt="Descripción de la imagen" width="600">
+
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <i class="fas fa-globe"></i>
+                <span> Crea tu web gratis  </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+          <h2>
+            Crea tu web profesional es gratis no somos obsesivo del dinero haci que no sacamo dinero a la persona
+          </h2>
+          <p>
+            En la sociedad y la poblacion los pogramadores no le importa el dinero.
+          </p>
+          <p>
+             aca abajo esta los siguientes click que eso va para crea tu web gratis.
+          </p>
+          <p>
+    Nosotros no somos responsables bajo ninguna circunstancia del contenido que los usuarios publiquen en las páginas web creadas mediante nuestra plataforma. Esto incluye, sin limitarse a, contenido íntimo, engañoso o cualquier intento de cometer delitos informáticos o digitales, como grooming o la difusión de imágenes desnudas. 
+    Cada usuario asume total y absoluta responsabilidad por lo que publica y por todas las consecuencias legales que ello pueda generar.
+          </p>
+          <p>
+            Si un usuario utiliza la web para ofrecer productos, servicios o conocimientos a terceros, nosotros no nos hacemos responsables de sus actos, siempre que no se hayan cometido estafas, delitos informáticos u otras conductas ilegales.
+          </p>
+       <p>
+        que es el usuario 
+       </p>
+       <p>
+        Usuario son todas las personas que acceden a un sitio web creado mediante nuestra plataforma, ya sea visitando la URL directamente, haciendo clic en un enlace o interactuando con la web de cualquier manera.
+       </p>
+       <p>
+        quien entra visita a esa url <a href="https://proyectweb.github.io/proyectoweb.github/index.html" 
+   target="_blank" 
+   style="background-color: #f44336; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+https://proyectweb.github.io/proyectoweb.github/index.html
+</a>
+ Esto se lo dice usuario cuando lo visitas una web. 
+       </p>
+        </section>
+
+
+        <section class="plans">
+            <div class="section-title">
+                
+            </div>
+            
+            <div class="button-container">
+                <a href="basico.html" class="btn basico">
+                    <i class="fas fa-leaf"></i>
+                    Básico
+                </a>
+                <a href="medium.html" class="btn medium">
+                    <i class="fas fa-star"></i>
+                    Medium
+                </a>
+                <a href="mediumcasipremium.html" class="btn avanzado">
+                    <i class="fas fa-rocket"></i>
+                    Avanzado
+                </a>
+                <a href="premium.html" class="btn premium">
+                    <i class="fas fa-crown"></i>
+                    Premium
+                </a>
+            </div>
+        </section>
+    </main>
+  <div class="video-container" id="videoContainer">
+    <video controls>
+      <source src="creatuweb.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </div>
+
+  <br>
+  <button class="change-color-btn" onclick="cambiarColores()">Cambiar Colores</button>
+
+ <table border="1">
+    <caption> Esos pasos es para obtener un link url hay comparti tu web creadas <p> El github es un sitio web que pone todo la web y te da gratis la url</p>
+
+    </caption>
+   
+    <tr>
+        <th>Paso</th>
+        <th>Descripción Detallada</th>
+    </tr>
+    <tr>
+        <td>1. Crear una cuenta en GitHub</td>
+        <td>Si aún no tienes una cuenta en GitHub, lo primero que debes hacer es registrarte en su página oficial. Ve a <a href="https://github.com" target="_blank">GitHub</a>, haz clic en "Sign up" (Registrarse) y completa el formulario con tu información (nombre, correo electrónico y contraseña). Si ya tienes una cuenta, simplemente inicia sesión con tu usuario y contraseña.</td>
+    </tr>
+    <tr>
+        <td>2. Crear un nuevo repositorio</td>
+        <td>Una vez que hayas iniciado sesión, ve al icono de tu perfil en la parte superior derecha de la pantalla y selecciona "Tus repositorios". Luego, haz clic en el botón verde "Nuevo" para crear un repositorio desde cero. A continuación:</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <ul>
+                <li>Dale un nombre a tu repositorio, como "mi-pagina-web".</li>
+                <li>Selecciona si deseas que el repositorio sea público (accesible para todos) o privado (solo accesible para ti y las personas que invites).</li>
+                <li>Marca la opción "Initialize this repository with a README" para que GitHub cree un archivo de inicio automáticamente.</li>
+                <li>Haz clic en "Crear repositorio".</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>3. Subir tu archivo index.html</td>
+        <td>Una vez creado el repositorio, necesitas cargar el archivo "index.html". Sigue estos pasos:</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <ul>
+                <li>En la página principal de tu repositorio, haz clic en "Add file" y selecciona "Upload files".</li>
+                <li>Arrastra y suelta tu archivo "index.html" o haz clic en "Choose your files" para seleccionarlo desde tu computadora.</li>
+                <li>Haz clic en "Commit changes" para confirmar la subida del archivo.</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>4. Activar GitHub Pages</td>
+        <td>Para que tu archivo "index.html" sea accesible como una página web, necesitas activar GitHub Pages. Para hacerlo:</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <ul>
+                <li>En la página principal de tu repositorio, haz clic en la pestaña "Settings" (Configuración).</li>
+                <li>Desplázate hacia abajo hasta encontrar la sección "GitHub Pages".</li>
+                <li>En "Source", selecciona la rama "main" (o "master", dependiendo de la configuración de tu repositorio).</li>
+                <li>En el menú desplegable que dice "/ (root)", asegúrate de que esté seleccionada la opción predeterminada.</li>
+                <li>Haz clic en "Save" para guardar los cambios.</li>
+                <li>GitHub te proporcionará una URL para acceder a tu página web, algo como: https://<tu_usuario>.github.io/<nombre_del_repositorio>/</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+
+  <script>
+    function cambiarColores() {
+      // Colores aleatorios claros para fondo y borde
+      const coloresClaros = ['#f9f9f9', '#ffe6e6', '#e6fff9', '#e6e6ff', '#fffbe6'];
+      const colorFondo = coloresClaros[Math.floor(Math.random() * coloresClaros.length)];
+      const colorBorde = coloresClaros[Math.floor(Math.random() * coloresClaros.length)];
+
+      document.body.style.backgroundColor = colorFondo;
+      document.getElementById('videoContainer').style.borderColor = colorBorde;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Web Personalizable</title>
+    <style>
+        :root {
+            --color-primario: #4e54c8;
+            --color-secundario: #8f94fb;
+            --color-fondo: #f4f4f4;
+            --color-texto: #333;
+            --color-fondo-contenido: white;
+            --color-footer: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+            padding: 20px;
+                border-radius: 10px;
+  max-width: 1200px;
+  margin: 90px auto;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--color-primario), var(--color-secundario));
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+               border-radius: 10px;
+  max-width:800px;
+  margin: 90px auto;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        .panel-edicion {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .controles {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            max-height: 800px;
+            overflow-y: auto;
+        }
+
+        .grupo-control {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--color-primario);
+        }
+
+        input[type="text"],
+        input[type="color"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .cargar-imagen {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .cargar-imagen:hover {
+            background-color: var(--color-secundario);
+        }
+
+        .vista-previa {
+            flex: 2;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            max-height: 800px;
+            overflow-y: auto;
+        }
+
+        .web-preview {
+            background-color: white;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-header {
+            background: linear-gradient(to right, var(--color-primario), var(--color-secundario));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .preview-fondo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        .preview-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            border: 3px solid white;
+        }
+
+        .preview-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .preview-titulo {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .preview-descripcion {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .preview-contenido {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .preview-fotos {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            justify-content: center;
+        }
+
+        .preview-foto {
+            width: 200px;
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .preview-foto img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-texto {
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        .preview-footer {
+            background-color: var(--color-footer);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .preview-contacto {
+            margin-bottom: 20px;
+        }
+
+        .preview-redes {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .preview-red-social {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .preview-red-social:hover {
+            background-color: var(--color-primario);
+        }
+
+        .acciones {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--color-secundario);
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .panel-edicion {
+                flex-direction: column;
+            }
+            
+            .controles, .vista-previa {
+                max-height: none;
+            }
+        }
+        .btn-atras {
+    position: fixed;           
+    top:25px;                  
+    left: 50%;                 
+    transform: translate(-50%, -50%);
+
+    background-color: #3498db; 
+    color: white;              
+    font-size: 18px;           
+    padding: 10px 40px;        /* más ancho que alto */
+    border: none;
+    border-radius: 8px;        
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-atras:hover {
+    background-color: #2980b9; 
+    transform: translate(-50%, -50%) scale(1.05); 
+}
+    </style>
+</head>
+<body>
+<button class="btn-atras" onclick="location.href='webgratiscrea.html'">Volver atrás</button>
+    <div class="contenedor">
+        <header>
+            <h1>Editor Web Personalizable</h1>
+            <p>Crea tu página web con tus propios colores, textos e imágenes</p>
+        </header>
+
+        <div class="panel-edicion">
+            <div class="controles">
+                <h2>Personalización</h2>
+                
+                <div class="grupo-control">
+                    <label for="colorPrimario">Color primario:</label>
+                    <input type="color" id="colorPrimario" value="#4e54c8">
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="colorSecundario">Color secundario:</label>
+                    <input type="color" id="colorSecundario" value="#8f94fb">
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="colorFondo">Color de fondo:</label>
+                    <input type="color" id="colorFondo" value="#f4f4f4">
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="colorTexto">Color de texto:</label>
+                    <input type="color" id="colorTexto" value="#333333">
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="colorFooter">Color de pie de página:</label>
+                    <input type="color" id="colorFooter" value="#2c3e50">
+                </div>
+                
+                <div class="grupo-control">
+                    <label>Imágenes:</label>
+                    <button class="cargar-imagen" id="btnCargarFondo">Cargar Fondo</button>
+                    <button class="cargar-imagen" id="btnCargarLogo">Cargar Logo</button>
+                    <button class="cargar-imagen" id="btnCargarFoto1">Cargar Foto 1</button>
+                    <button class="cargar-imagen" id="btnCargarFoto2">Cargar Foto 2</button>
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="titulo">Título de la web:</label>
+                    <input type="text" id="titulo" value="Mi Página Personal">
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" rows="3">Bienvenido a mi página personalizada</textarea>
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="textoContenido">Texto de contenido:</label>
+                    <textarea id="textoContenido" rows="5">Esta es mi página web personalizada donde puedes conocerme mejor y ver mis proyectos. Puedes personalizar este texto con información sobre ti o tu negocio.</textarea>
+                </div>
+                
+                <h3>Pie de página</h3>
+                
+                <div class="grupo-control">
+                    <label for="tituloFooter">Título del pie de página:</label>
+                    <input type="text" id="tituloFooter" value="Contacto">
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="textoFooter">Texto de contacto:</label>
+                    <textarea id="textoFooter" rows="3">Puedes contactarme a través de los siguientes medios o visitar mis redes sociales:</textarea>
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="email">Email de contacto:</label>
+                    <input type="text" id="email" placeholder="tu.email@ejemplo.com">
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="telefono">Teléfono de contacto:</label>
+                    <input type="text" id="telefono" placeholder="+1 234 567 890">
+                </div>
+                
+                <h3>Redes Sociales</h3>
+                
+                <div class="grupo-control">
+                    <label for="facebook">Facebook:</label>
+                    <input type="url" id="facebook" placeholder="https://facebook.com/tu-perfil">
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="instagram">Instagram:</label>
+                    <input type="url" id="instagram" placeholder="https://instagram.com/tu-perfil">
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="twitter">Twitter:</label>
+                    <input type="url" id="twitter" placeholder="https://twitter.com/tu-perfil">
+                </div>
+                
+                <div class="grupo-control">
+                    <label for="whatsapp">WhatsApp:</label>
+                    <input type="text" id="whatsapp" placeholder="Número de WhatsApp">
+                </div>
+            </div>
+            
+            <div class="vista-previa">
+                <h2>Vista Previa</h2>
+                <div class="web-preview" id="webPreview">
+                    <div class="preview-header">
+                        <img src="" class="preview-fondo" id="previewFondo">
+                        <div class="preview-logo" id="previewLogo">Logo</div>
+                        <h1 class="preview-titulo" id="previewTitulo">Mi Página Personal</h1>
+                        <p class="preview-descripcion" id="previewDescripcion">Bienvenido a mi página personalizada</p>
+                    </div>
+                    
+                    <div class="preview-contenido">
+                        <div class="preview-fotos">
+                            <div class="preview-foto" id="previewFoto1">Foto 1</div>
+                            <div class="preview-foto" id="previewFoto2">Foto 2</div>
+                        </div>
+                        
+                        <div class="preview-texto" id="previewTexto">
+                            Esta es mi página web personalizada donde puedes conocerme mejor y ver mis proyectos. Puedes personalizar este texto con información sobre ti o tu negocio.
+                        </div>
+                    </div>
+                    
+                    <div class="preview-footer" id="previewFooter">
+                        <h3 class="preview-titulo-footer" id="previewTituloFooter">Contacto</h3>
+                        <p class="preview-contacto" id="previewContacto">
+                            Puedes contactarme a través de los siguientes medios o visitar mis redes sociales:
+                        </p>
+                        <p id="previewEmail"></p>
+                        <p id="previewTelefono"></p>
+                        
+                        <div class="preview-redes" id="previewRedes">
+                            <!-- Redes sociales se agregarán aquí -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="acciones">
+            <button id="btnGuardar">Guardar Cambios</button>
+            <button id="btnDescargar">Descargar HTML</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del formulario
+            const colorPrimarioInput = document.getElementById('colorPrimario');
+            const colorSecundarioInput = document.getElementById('colorSecundario');
+            const colorFondoInput = document.getElementById('colorFondo');
+            const colorTextoInput = document.getElementById('colorTexto');
+            const colorFooterInput = document.getElementById('colorFooter');
+            const tituloInput = document.getElementById('titulo');
+            const descripcionInput = document.getElementById('descripcion');
+            const textoContenidoInput = document.getElementById('textoContenido');
+            const tituloFooterInput = document.getElementById('tituloFooter');
+            const textoFooterInput = document.getElementById('textoFooter');
+            const emailInput = document.getElementById('email');
+            const telefonoInput = document.getElementById('telefono');
+            const facebookInput = document.getElementById('facebook');
+            const instagramInput = document.getElementById('instagram');
+            const twitterInput = document.getElementById('twitter');
+            const whatsappInput = document.getElementById('whatsapp');
+            
+            // Botones de carga de imágenes
+            const btnCargarFondo = document.getElementById('btnCargarFondo');
+            const btnCargarLogo = document.getElementById('btnCargarLogo');
+            const btnCargarFoto1 = document.getElementById('btnCargarFoto1');
+            const btnCargarFoto2 = document.getElementById('btnCargarFoto2');
+            
+            // Botones de acción
+            const btnGuardar = document.getElementById('btnGuardar');
+            const btnDescargar = document.getElementById('btnDescargar');
+            
+            // Elementos de vista previa
+            const previewFondo = document.getElementById('previewFondo');
+            const previewLogo = document.getElementById('previewLogo');
+            const previewTitulo = document.getElementById('previewTitulo');
+            const previewDescripcion = document.getElementById('previewDescripcion');
+            const previewFoto1 = document.getElementById('previewFoto1');
+            const previewFoto2 = document.getElementById('previewFoto2');
+            const previewTexto = document.getElementById('previewTexto');
+            const previewFooter = document.getElementById('previewFooter');
+            const previewTituloFooter = document.getElementById('previewTituloFooter');
+            const previewContacto = document.getElementById('previewContacto');
+            const previewEmail = document.getElementById('previewEmail');
+            const previewTelefono = document.getElementById('previewTelefono');
+            const previewRedes = document.getElementById('previewRedes');
+            
+            // Variables para almacenar las imágenes
+            let fondoImage = null;
+            let logoImage = null;
+            let foto1Image = null;
+            let foto2Image = null;
+            
+            // Configurar event listeners para los inputs
+            colorPrimarioInput.addEventListener('input', actualizarVistaPrevia);
+            colorSecundarioInput.addEventListener('input', actualizarVistaPrevia);
+            colorFondoInput.addEventListener('input', actualizarVistaPrevia);
+            colorTextoInput.addEventListener('input', actualizarVistaPrevia);
+            colorFooterInput.addEventListener('input', actualizarVistaPrevia);
+            tituloInput.addEventListener('input', actualizarVistaPrevia);
+            descripcionInput.addEventListener('input', actualizarVistaPrevia);
+            textoContenidoInput.addEventListener('input', actualizarVistaPrevia);
+            tituloFooterInput.addEventListener('input', actualizarVistaPrevia);
+            textoFooterInput.addEventListener('input', actualizarVistaPrevia);
+            emailInput.addEventListener('input', actualizarVistaPrevia);
+            telefonoInput.addEventListener('input', actualizarVistaPrevia);
+            facebookInput.addEventListener('input', actualizarRedesSociales);
+            instagramInput.addEventListener('input', actualizarRedesSociales);
+            twitterInput.addEventListener('input', actualizarRedesSociales);
+            whatsappInput.addEventListener('input', actualizarRedesSociales);
+            
+            // Configurar event listeners para los botones de carga
+            btnCargarFondo.addEventListener('click', () => cargarImagen('fondo'));
+            btnCargarLogo.addEventListener('click', () => cargarImagen('logo'));
+            btnCargarFoto1.addEventListener('click', () => cargarImagen('foto1'));
+            btnCargarFoto2.addEventListener('click', () => cargarImagen('foto2'));
+            
+            // Configurar botones de acción
+            btnGuardar.addEventListener('click', guardarCambios);
+            btnDescargar.addEventListener('click', descargarHTML);
+            
+            // Inicializar vista previa
+            actualizarVistaPrevia();
+            actualizarRedesSociales();
+            
+            // Función para cargar imágenes desde el dispositivo
+            function cargarImagen(tipo) {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                
+                input.onchange = e => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = event => {
+                            switch(tipo) {
+                                case 'fondo':
+                                    fondoImage = event.target.result;
+                                    previewFondo.src = fondoImage;
+                                    break;
+                                case 'logo':
+                                    logoImage = event.target.result;
+                                    previewLogo.innerHTML = `<img src="${logoImage}" alt="Logo">`;
+                                    break;
+                                case 'foto1':
+                                    foto1Image = event.target.result;
+                                    previewFoto1.innerHTML = `<img src="${foto1Image}" alt="Foto 1">`;
+                                    break;
+                                case 'foto2':
+                                    foto2Image = event.target.result;
+                                    previewFoto2.innerHTML = `<img src="${foto2Image}" alt="Foto 2">`;
+                                    break;
+                            }
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                };
+                
+                input.click();
+            }
+            
+            // Función para actualizar la vista previa
+            function actualizarVistaPrevia() {
+                // Actualizar colores
+                document.documentElement.style.setProperty('--color-primario', colorPrimarioInput.value);
+                document.documentElement.style.setProperty('--color-secundario', colorSecundarioInput.value);
+                document.documentElement.style.setProperty('--color-fondo', colorFondoInput.value);
+                document.documentElement.style.setProperty('--color-texto', colorTextoInput.value);
+                document.documentElement.style.setProperty('--color-footer', colorFooterInput.value);
+                
+                // Actualizar textos
+                previewTitulo.textContent = tituloInput.value || 'Mi Página Personal';
+                previewDescripcion.textContent = descripcionInput.value || 'Bienvenido a mi página personalizada';
+                previewTexto.textContent = textoContenidoInput.value || 'Esta es mi página web personalizada...';
+                previewTituloFooter.textContent = tituloFooterInput.value || 'Contacto';
+                previewContacto.textContent = textoFooterInput.value || 'Puedes contactarme a través de los siguientes medios...';
+                
+                // Actualizar contacto
+                if (emailInput.value) {
+                    previewEmail.textContent = `Email: ${emailInput.value}`;
+                } else {
+                    previewEmail.textContent = '';
+                }
+                
+                if (telefonoInput.value) {
+                    previewTelefono.textContent = `Teléfono: ${telefonoInput.value}`;
+                } else {
+                    previewTelefono.textContent = '';
+                }
+            }
+            
+            // Función para actualizar las redes sociales en la vista previa
+            function actualizarRedesSociales() {
+                let redesHTML = '';
+                
+                if (facebookInput.value) {
+                    redesHTML += `<a href="${facebookInput.value}" class="preview-red-social">FB</a>`;
+                }
+                
+                if (instagramInput.value) {
+                    redesHTML += `<a href="${instagramInput.value}" class="preview-red-social">IG</a>`;
+                }
+                
+                if (twitterInput.value) {
+                    redesHTML += `<a href="${twitterInput.value}" class="preview-red-social">TW</a>`;
+                }
+                
+                if (whatsappInput.value) {
+                    redesHTML += `<a href="https://wa.me/${whatsappInput.value}" class="preview-red-social">WA</a>`;
+                }
+                
+                previewRedes.innerHTML = redesHTML;
+            }
+            
+            // Función para guardar cambios
+            function guardarCambios() {
+                alert('Cambios guardados correctamente. Ya puedes descargar tu HTML.');
+            }
+            
+            // Función para descargar el HTML
+            function descargarHTML() {
+                const colorPrimario = colorPrimarioInput.value;
+                const colorSecundario = colorSecundarioInput.value;
+                const colorFondo = colorFondoInput.value;
+                const colorTexto = colorTextoInput.value;
+                const colorFooter = colorFooterInput.value;
+                const titulo = tituloInput.value || 'Mi Página Personal';
+                const descripcion = descripcionInput.value || 'Bienvenido a mi página personalizada';
+                const textoContenido = textoContenidoInput.value || 'Esta es mi página web personalizada...';
+                const tituloFooter = tituloFooterInput.value || 'Contacto';
+                const textoFooter = textoFooterInput.value || 'Puedes contactarme a través de los siguientes medios...';
+                const email = emailInput.value;
+                const telefono = telefonoInput.value;
+                const facebook = facebookInput.value;
+                const instagram = instagramInput.value;
+                const twitter = twitterInput.value;
+                const whatsapp = whatsappInput.value;
+                
+                const htmlContent = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${titulo}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: ${colorFondo};
+            color: ${colorTexto};
+            line-height: 1.6;
+        }
+
+        .contenedor {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            background: linear-gradient(to right, ${colorPrimario}, ${colorSecundario});
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .fondo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            border: 3px solid white;
+        }
+
+        .logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .titulo {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .descripcion {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contenido {
+            padding: 40px;
+        }
+
+        .fotos {
+            display: flex;
+            gap: 20px;
+            margin: 40px 0;
+            justify-content: center;
+        }
+
+        .foto {
+            width: 200px;
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .foto img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .texto {
+            margin: 30px 0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background-color: ${colorFooter};
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .titulo-footer {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .contacto {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .redes {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .red-social {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .red-social:hover {
+            background-color: ${colorPrimario};
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="header">
+            ${fondoImage ? `<img src="${fondoImage}" class="fondo" alt="Fondo">` : ''}
+            ${logoImage ? `<div class="logo"><img src="${logoImage}" alt="Logo"></div>` : '<div class="logo">Logo</div>'}
+            <h1 class="titulo">${titulo}</h1>
+            <p class="descripcion">${descripcion}</p>
+        </div>
+        
+        <div class="contenido">
+            <div class="fotos">
+                ${foto1Image ? `<div class="foto"><img src="${foto1Image}" alt="Foto 1"></div>` : '<div class="foto">Foto 1</div>'}
+                ${foto2Image ? `<div class="foto"><img src="${foto2Image}" alt="Foto 2"></div>` : '<div class="foto">Foto 2</div>'}
+            </div>
+            
+            <div class="texto">
+                ${textoContenido.replace(/\n/g, '<br>')}
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3 class="titulo-footer">${tituloFooter}</h3>
+            <p class="contacto">${textoFooter.replace(/\n/g, '<br>')}</p>
+            ${email ? `<p>Email: ${email}</p>` : ''}
+            ${telefono ? `<p>Teléfono: ${telefono}</p>` : ''}
+            
+            <div class="redes">
+                ${facebook ? `<a href="${facebook}" class="red-social">FB</a>` : ''}
+                ${instagram ? `<a href="${instagram}" class="red-social">IG</a>` : ''}
+                ${twitter ? `<a href="${twitter}" class="red-social">TW</a>` : ''}
+                ${whatsapp ? `<a href="https://wa.me/${whatsapp}" class="red-social">WA</a>` : ''}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+                `;
+                
+                // Crear blob y descargar
+                const blob = new Blob([htmlContent], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'mi-pagina-personal.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abogado Diego Tour - Asesoría legal con un enfoque en la justicia y la calma. Expertos en protección al cliente y usuario.">
+    <title>Abogado Diego Tour</title>
+    <style>
+        /* Variables CSS optimizadas para bufete de abogados */
+        :root {
+            --primary-dark: #0A1A3A;  /* Azul marino profundo - autoridad */
+            --primary-medium: #1E3A6E; /* Azul corporativo */
+            --primary-light: #3A5A8A;
+            --accent-gold: #C9B18D;    /* Oro profesional */
+            --accent-gold-dark: #B39B6F;
+            --light-bg: #F9F8F5;       /* Fondo claro profesional */
+            --light-bg-secondary: #F0EEE8;
+            --text-dark: #2D3748;
+            --text-medium: #4A5568;
+            --text-light: #F9F8F5;
+            --success: #2F855A;        /* Verde para elementos positivos */
+            --section-bg: #FFFFFF;
+            --border-color: #E2E8F0;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --box-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Reset mejorado */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Crimson Text', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+                border-radius: 10px;
+  max-width: 1200px;
+  margin: 90px auto;
+        }
+
+        /* Tipografía mejorada */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1.2rem;
+            color: var(--primary-dark);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-medium);
+        }
+
+        /* Header con efecto de vidrio mejorado */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: rgba(10, 26, 58, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+            border-bottom: 1px solid rgba(201, 177, 141, 0.15);
+            transition: var(--transition);
+               border-radius: 10px;
+  max-width:800px;
+  margin: 90px auto;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+             
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+            margin: 0 0.2rem;
+        }
+
+        .logo-icon {
+            margin-right: 0.8rem;
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+        }
+
+        /* Navegación premium */
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            cursor: pointer;
+            padding: 0.7rem 1.3rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-family: 'Crimson Text', serif;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0.9;
+        }
+
+        .nav-btn:hover {
+            opacity: 1;
+            color: var(--accent-gold);
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover::before {
+            width: 100%;
+        }
+
+        /* Hero section con gradiente profesional */
+        .hero {
+            background: linear-gradient(135deg, rgba(10, 26, 58, 0.92) 0%, rgba(30, 58, 110, 0.88) 100%), 
+                        url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+              
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(transparent, var(--light-bg));
+            z-index: 1;
+
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+           
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.8rem;
+            color: var(--text-light);
+            line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 span {
+            color: var(--accent-gold);
+            position: relative;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-gold);
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Botón CTA premium */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 1.1rem 2.4rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-family: 'Crimson Text', serif;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            z-index: 1;
+            letter-spacing: 0.3px;
+        }
+
+        .btn:hover {
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow-hover);
+               
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn i {
+            margin-left: 0.7rem;
+            transition: var(--transition);
+        }
+
+        .btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Secciones principales */
+        .section {
+            padding: 7rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            background-color: var(--section-bg);
+        }
+
+        .section-bg {
+            background-color: var(--light-bg-secondary);
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            margin-bottom: 3.5rem;
+            color: var(--primary-dark);
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            margin: 1.2rem auto;
+            transition: var(--transition);
+        }
+
+        .section-title:hover::after {
+            width: 120px;
+        }
+
+        /* Sobre Nosotros - Diseño premium */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-image {
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow-hover);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(10, 26, 58, 0.4) 0%, rgba(201, 177, 141, 0.2) 100%);
+        }
+
+        /* Sección de Protección al Cliente */
+        .protection-section {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            clip-path: polygon(0 3%, 100% 0%, 100% 97%, 0% 100%);
+            padding: 8rem 2rem;
+        }
+
+        .protection-section .section-title {
+            color: var(--text-light);
+        }
+
+        .protection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .protection-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 2.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid rgba(201, 177, 141, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .protection-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.12);
+            border-color: rgba(201, 177, 141, 0.3);
+        }
+
+        .protection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background-color: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .protection-card:hover::before {
+            height: 100%;
+        }
+
+        .protection-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .protection-card h3 i {
+            margin-right: 1.2rem;
+            font-size: 1.5rem;
+        }
+
+        .protection-card p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.8rem;
+        }
+
+        .protection-badge {
+            display: inline-block;
+            background-color: var(--success);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Nuestro Enfoque - Tarjetas premium */
+        .approach-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .approach-item {
+            background-color: var(--section-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .approach-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+            border-color: var(--accent-gold);
+        }
+
+        .approach-item h3 {
+            color: var(--primary-medium);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .approach-item h3 i {
+            margin-right: 1rem;
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+        }
+
+        /* Contacto - Diseño premium */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-details {
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+            padding: 0.8rem;
+            border-radius: 4px;
+        }
+
+        .contact-item:hover {
+            background-color: rgba(201, 177, 141, 0.1);
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            margin-right: 1.5rem;
+            color: var(--accent-gold);
+            font-size: 1.6rem;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .contact-map {
+            height: 500px;
+            background: #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Footer premium */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 6rem 2rem 3rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(var(--light-bg), transparent);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            text-align: left;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--accent-gold);
+        }
+
+        .footer-about p {
+            opacity: 0.85;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: var(--accent-gold);
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            opacity: 0.85;
+            transition: var(--transition);
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+            color: var(--accent-gold);
+        }
+
+        .footer-contact p {
+            opacity: 0.85;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        .footer-contact i {
+            margin-right: 1rem;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+        }
+
+        .copyright {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(201, 177, 141, 0.2);
+            opacity: 0.7;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                height: 400px;
+                order: -1;
+            }
+            
+            .protection-section {
+                clip-path: polygon(0 2%, 100% 0%, 100% 98%, 0% 100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 5rem 1.5rem;
+            }
+            
+            .protection-section {
+                padding: 6rem 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 1rem 2rem;
+            }
+            
+            .protection-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Contacto Detalles */
+        .contact-details p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-dark); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader-logo {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            font-family: 'Playfair Display', serif;
+            animation: fade-in-out 2s infinite;
+        }
+
+        @keyframes fade-in-out {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        
+        .loader-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .content-visible {
+            opacity: 1 !important;
+        }
+
+        /* Customization Panel */
+        .customization-panel {
+            position: fixed;
+            top: 50%;
+            right: -350px;
+            transform: translateY(-50%);
+            width: 350px;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            border-radius: 10px 0 0 10px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .customization-panel.open {
+            right: 0;
+        }
+
+        .panel-toggle {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-dark);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px 0 0 10px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Crimson Text', serif;
+            font-weight: 600;
+        }
+
+        .panel-toggle:hover {
+            background: var(--primary-medium);
+        }
+
+        .panel-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .panel-section h3 {
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            font-size: 18px;
+        }
+
+        .color-picker {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .color-picker label {
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .color-picker input[type="color"] {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .text-editor {
+            margin-bottom: 15px;
+        }
+
+        .text-editor label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .text-editor textarea, 
+        .text-editor input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .text-editor textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .panel-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .panel-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            flex-grow: 1;
+        }
+
+        .btn-save {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-reset {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .btn-download {
+            background: var(--primary-medium);
+            color: white;
+        }
+
+        .btn-default {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .social-input {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .social-input i {
+            margin-right: 10px;
+            font-size: 20px;
+            color: var(--primary-dark);
+            width: 24px;
+        }
+
+        .social-input input {
+            flex: 1;
+        }
+        .btn-atras {
+    position: fixed;           
+    top:25px;                  
+    left: 50%;                 
+    transform: translate(-50%, -50%);
+
+    background-color: #3498db; 
+    color: white;              
+    font-size: 18px;           
+    padding: 10px 40px;        /* más ancho que alto */
+    border: none;
+    border-radius: 8px;        
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-atras:hover {
+    background-color: #2980b9; 
+    transform: translate(-50%, -50%) scale(1.05); 
+}
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    
+    <div id="loader">
+      
+    </div>
+
+    <div class="customization-panel" id="customizationPanel">
+        <div class="panel-section"><button class="btn-atras" onclick="location.href='webgratiscrea.html'">Volver atrás</button>
+            <h3>Personalizar Colores</h3>
+            
+            <div class="color-picker">
+                <label>Color Principal Oscuro:</label>
+                <input type="color" id="primaryDarkColor" value="#0A1A3A">
+            </div>
+            
+            <div class="color-picker">
+                <label>Color Principal Medio:</label>
+                <input type="color" id="primaryMediumColor" value="#1E3A6E">
+            </div>
+            
+            <div class="color-picker">
+                <label>Color Acento Dorado:</label>
+                <input type="color" id="accentGoldColor" value="#C9B18D">
+            </div>
+            
+            <div class="color-picker">
+                <label>Fondo Claro:</label>
+                <input type="color" id="lightBgColor" value="#F9F8F5">
+            </div>
+            
+            <div class="color-picker">
+                <label>Color de Texto Oscuro:</label>
+                <input type="color" id="textDarkColor" value="#2D3748">
+            </div>
+            
+            <div class="color-picker">
+                <label>Color de Fondo Footer:</label>
+                <input type="color" id="footerBgColor" value="#0A1A3A">
+            </div>
+        </div>
+        
+        <div class="panel-section">
+            <h3>Personalizar Textos</h3>
+            
+            <div class="text-editor">
+                <label>Título Principal:</label>
+                <input type="text" id="mainTitleInput" value="Abogado Diego Tour">
+            </div>
+            
+            <div class="text-editor">
+                <label>Descripción Hero:</label>
+                <textarea id="heroDescriptionInput">Defender no siempre es un acto de justicia externa, a veces es una forma de calmar el propio silencio interior en un mundo que no deja de acusar.</textarea>
+            </div>
+            
+            <div class="text-editor">
+                <label>Texto Sobre Nosotros:</label>
+                <textarea id="aboutTextInput">Nuestra oficina, dirigida por el Abogado Diego Tour, se dedica a proporcionar asesoría legal de la más alta calidad. Con años de experiencia y un profundo compromiso con nuestros clientes, abordamos cada caso con la meticulosidad y dedicación que se merece. Creemos que la justicia es un derecho fundamental y trabajamos incansablemente para garantizar que la voz de nuestros clientes sea escuchada y sus derechos sean protegidos. Nuestro enfoque es personalizado, estratégico y siempre transparente.</textarea>
+            </div>
+            
+            <div class="text-editor">
+                <label>Texto de Contacto:</label>
+                <textarea id="contactTextInput">La Asesoría Legal que Usted Necesita, con Respeto y Calma. Como la naturaleza encuentra su equilibrio en la calma, así la justicia se construye desde el respeto y la paz.</textarea>
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <h3>Personalizar Servicios</h3>
+
+            <div class="text-editor">
+                <label>Título de Sección de Protección:</label>
+                <input type="text" id="protectionSectionTitleInput" value="Protección Legal Integral">
+            </div>
+
+            <div class="text-editor">
+                <label>Título 1er Servicio:</label>
+                <input type="text" id="service1TitleInput" value="Protección de Cliente">
+            </div>
+            <div class="text-editor">
+                <label>Descripción 1er Servicio:</label>
+                <textarea id="service1DescInput">Nos comprometemos con la protección integral de nuestros clientes, garantizando en todo momento la privacidad y confidencialidad de su información personal. Brindamos un trato digno, honesto y transparente, asegurando una experiencia segura y confiable.</textarea>
+            </div>
+            
+            <div class="text-editor">
+                <label>Título 2do Servicio:</label>
+                <input type="text" id="service2TitleInput" value="Confidencialidad Absoluta">
+            </div>
+            <div class="text-editor">
+                <label>Descripción 2do Servicio:</label>
+                <textarea id="service2DescInput">Su información y su caso son tratados con la más estricta confidencialidad. Valoramos su confianza y mantenemos rigurosos protocolos para asegurar que sus datos estén siempre seguros.</textarea>
+            </div>
+
+            <div class="text-editor">
+                <label>Título 3er Servicio:</label>
+                <input type="text" id="service3TitleInput" value="Asesoría Personalizada">
+            </div>
+            <div class="text-editor">
+                <label>Descripción 3er Servicio:</label>
+                <textarea id="service3DescInput">Cada caso es único. Nos dedicamos a entender sus necesidades específicas para ofrecerle una estrategia legal a medida, maximizando sus posibilidades de éxito.</textarea>
+            </div>
+        </div>
+        
+        <div class="panel-section">
+            <h3>Personalizar Contacto</h3>
+            
+            <div class="text-editor">
+                <label>Dirección:</label>
+                <input type="text" id="contactAddressInput" value="Av. San Martín 1234, Ciudad, País">
+            </div>
+            <div class="text-editor">
+                <label>Teléfono:</label>
+                <input type="text" id="contactPhoneInput" value="+54 11 1234 5678">
+            </div>
+            <div class="text-editor">
+                <label>Correo Electrónico:</label>
+                <input type="text" id="contactEmailInput" value="info@diegonotour.com">
+            </div>
+        </div>
+
+        <div class="panel-buttons">
+            <button class="panel-btn btn-save" id="saveBtn">Guardar Cambios</button>
+            <button class="panel-btn btn-reset" id="resetBtn">Restaurar</button>
+            <button class="panel-btn btn-download" id="downloadBtn"><i class="fas fa-download"></i> Descargar</button>
+        </div>
+    </div>
+
+    <div class="panel-toggle" id="panelToggle">
+        <i class="fas fa-palette"></i> Personalizar
+    </div>
+
+    <div id="main-content">
+        <header>
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-scale-balanced logo-icon"></i> <span id="mainTitle">Abogado Diego Tour</span>
+                </a>
+                <nav class="nav-links">
+                    <button class="nav-btn" onclick="scrollToSection('hero')">Inicio</button>
+                    <button class="nav-btn" onclick="scrollToSection('about')">Sobre Nosotros</button>
+                    <button class="nav-btn" onclick="scrollToSection('protection')">Servicios</button>
+                    <button class="nav-btn" onclick="scrollToSection('approach')">Enfoque</button>
+                    <button class="nav-btn" onclick="scrollToSection('contact')">Contacto</button>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" id="hero">
+                <div class="hero-content">
+                    <h1 id="heroTitle">Abogado <span>Diego Tour</span></h1>
+                    <p id="heroDescription">Defender no siempre es un acto de justicia externa, a veces es una forma de calmar el propio silencio interior en un mundo que no deja de acusar.</p>
+                    <a href="#contact" class="btn">
+                        Contáctenos <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </section>
+            <hr>
+
+            <section class="section" id="about">
+                <h2 class="section-title">Sobre Nosotros</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p id="aboutText">Nuestra oficina, dirigida por el Abogado Diego Tour, se dedica a proporcionar asesoría legal de la más alta calidad. Con años de experiencia y un profundo compromiso con nuestros clientes, abordamos cada caso con la meticulosidad y dedicación que se merece. Creemos que la justicia es un derecho fundamental y trabajamos incansablemente para garantizar que la voz de nuestros clientes sea escuchada y sus derechos sean protegidos. Nuestro enfoque es personalizado, estratégico y siempre transparente.</p>
+                    </div>
+                    <div class="about-image"></div>
+                </div>
+            </section>
+            <hr>
+
+            <section class="section protection-section" id="protection">
+                <h2 class="section-title" id="protectionSectionTitle">Protección Legal Integral</h2>
+                <div class="protection-grid">
+                    <div class="protection-card">
+                        <h3><i class="fas fa-shield-alt"></i> <span id="service1Title">Protección de Cliente</span></h3>
+                        <p id="service1Desc">Nos comprometemos con la protección integral de nuestros clientes, garantizando en todo momento la privacidad y confidencialidad de su información personal. Brindamos un trato digno, honesto y transparente, asegurando una experiencia segura y confiable.</p>
+                        <span class="protection-badge">Legal</span>
+                    </div>
+                    <div class="protection-card">
+                        <h3><i class="fas fa-lock"></i> <span id="service2Title">Confidencialidad Absoluta</span></h3>
+                        <p id="service2Desc">Su información y su caso son tratados con la más estricta confidencialidad. Valoramos su confianza y mantenemos rigurosos protocolos para asegurar que sus datos estén siempre seguros.</p>
+                        <span class="protection-badge">Seguridad</span>
+                    </div>
+                    <div class="protection-card">
+                        <h3><i class="fas fa-handshake"></i> <span id="service3Title">Asesoría Personalizada</span></h3>
+                        <p id="service3Desc">Cada caso es único. Nos dedicamos a entender sus necesidades específicas para ofrecerle una estrategia legal a medida, maximizando sus posibilidades de éxito.</p>
+                        <span class="protection-badge">Estrategia</span>
+                    </div>
+                </div>
+            </section>
+            <hr>
+            
+            <section class="section section-bg" id="approach">
+                <h2 class="section-title">Nuestro Enfoque</h2>
+                <div class="approach-list">
+                    <div class="approach-item">
+                        <h3><i class="fas fa-balance-scale"></i> Justicia con Calma</h3>
+                        <p>Nuestra meta es resolver conflictos de manera justa y equilibrada, evitando el estrés innecesario y promoviendo la paz. Creemos que las soluciones más efectivas nacen de una mente clara y un enfoque sereno.</p>
+                    </div>
+                    <div class="approach-item">
+                        <h3><i class="fas fa-user-friends"></i> Relación de Confianza</h3>
+                        <p>Construimos una sólida relación de confianza con cada cliente. Nos aseguramos de que se sientan escuchados, respetados y completamente informados en cada etapa del proceso legal.</p>
+                    </div>
+                    <div class="approach-item">
+                        <h3><i class="fas fa-lightbulb"></i> Innovación Legal</h3>
+                        <p>Nos mantenemos al día con los últimos avances en el campo legal y tecnológico para ofrecer soluciones modernas y eficientes. Nuestro objetivo es siempre encontrar el camino más directo y eficaz hacia la resolución.</p>
+                    </div>
+                </div>
+            </section>
+            <hr>
+
+            <section class="section" id="contact">
+                <h2 class="section-title">Contacto</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Hablemos de su Caso</h3>
+                        <p id="contactText">La Asesoría Legal que Usted Necesita, con Respeto y Calma. Como la naturaleza encuentra su equilibrio en la calma, así la justicia se construye desde el respeto y la paz.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <p><strong>Ubicación</strong></p>
+                                    <p id="contactAddress">Av. San Martín 1234, Ciudad, País</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <div>
+                                    <p><strong>Teléfono</strong></p>
+                                    <p id="contactPhone">+54 11 1234 5678</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <p><strong>Correo Electrónico</strong></p>
+                                    <p id="contactEmail">info@diegonotour.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.1458920409953!2d-58.37563178477085!3d-34.60098498045938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a335359a117a33%3A0xe1c784013d5082d!2sAv.%20San%20Mart%C3%ADn%201234%2C%20C1234ABW%20CABA!5e0!3m2!1ses-419!2sar!4v1628170030174!5m2!1ses-419!2sar" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <hr>
+
+        <footer id="footer">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Diego <span>Tour</span></div>
+                    <p>Comprometidos con la excelencia legal y la protección de sus derechos. Su tranquilidad es nuestra prioridad.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#about">Sobre Nosotros</a></li>
+                        <li><a href="#protection">Servicios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <span id="footerAddress">Av. San Martín 1234, Ciudad, País</span></p>
+                    <p><i class="fas fa-phone-alt"></i> <span id="footerPhone">+54 11 1234 5678</span></p>
+                    <p><i class="fas fa-envelope"></i> <span id="footerEmail">info@diegonotour.com</span></p>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2025 Abogado Diego Tour. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // JS para el panel de personalización y la descarga del HTML
+        const panelToggle = document.getElementById('panelToggle');
+        const customizationPanel = document.getElementById('customizationPanel');
+        const saveBtn = document.getElementById('saveBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        const styleSheet = document.styleSheets[0]; // Accede a la primera hoja de estilos <style>
+
+        const elements = {
+            // Colores
+            primaryDarkColor: document.getElementById('primaryDarkColor'),
+            primaryMediumColor: document.getElementById('primaryMediumColor'),
+            accentGoldColor: document.getElementById('accentGoldColor'),
+            lightBgColor: document.getElementById('lightBgColor'),
+            textDarkColor: document.getElementById('textDarkColor'),
+            footerBgColor: document.getElementById('footerBgColor'),
+            // Textos
+            mainTitleInput: document.getElementById('mainTitleInput'),
+            heroDescriptionInput: document.getElementById('heroDescriptionInput'),
+            aboutTextInput: document.getElementById('aboutTextInput'),
+            contactTextInput: document.getElementById('contactTextInput'),
+            protectionSectionTitleInput: document.getElementById('protectionSectionTitleInput'),
+            service1TitleInput: document.getElementById('service1TitleInput'),
+            service1DescInput: document.getElementById('service1DescInput'),
+            service2TitleInput: document.getElementById('service2TitleInput'),
+            service2DescInput: document.getElementById('service2DescInput'),
+            service3TitleInput: document.getElementById('service3TitleInput'),
+            service3DescInput: document.getElementById('service3DescInput'),
+            contactAddressInput: document.getElementById('contactAddressInput'),
+            contactPhoneInput: document.getElementById('contactPhoneInput'),
+            contactEmailInput: document.getElementById('contactEmailInput'),
+        };
+
+        const targets = {
+            // Colores
+            '--primary-dark': 'primaryDarkColor',
+            '--primary-medium': 'primaryMediumColor',
+            '--accent-gold': 'accentGoldColor',
+            '--light-bg': 'lightBgColor',
+            '--text-dark': 'textDarkColor',
+            // Textos
+            mainTitle: 'mainTitleInput',
+            heroTitle: 'mainTitleInput',
+            heroDescription: 'heroDescriptionInput',
+            aboutText: 'aboutTextInput',
+            contactText: 'contactTextInput',
+            protectionSectionTitle: 'protectionSectionTitleInput',
+            service1Title: 'service1TitleInput',
+            service1Desc: 'service1DescInput',
+            service2Title: 'service2TitleInput',
+            service2Desc: 'service2DescInput',
+            service3Title: 'service3TitleInput',
+            service3Desc: 'service3DescInput',
+            contactAddress: 'contactAddressInput',
+            contactPhone: 'contactPhoneInput',
+            contactEmail: 'contactEmailInput',
+            footerAddress: 'contactAddressInput',
+            footerPhone: 'contactPhoneInput',
+            footerEmail: 'contactEmailInput',
+        };
+
+        // Función para aplicar los cambios de texto al HTML
+        function applyTextChanges() {
+            for (const targetId in targets) {
+                const inputId = targets[targetId];
+                if (document.getElementById(targetId) && elements[inputId]) {
+                    if (targetId === 'heroTitle') {
+                        document.getElementById(targetId).innerHTML = `<span>${elements[inputId].value}</span>`;
+                    } else if (targetId === 'mainTitle') {
+                        document.getElementById(targetId).textContent = elements[inputId].value;
+                    } else {
+                        document.getElementById(targetId).textContent = elements[inputId].value;
+                    }
+                }
+            }
+        }
+
+        // Función para aplicar los cambios de color al CSS
+        function applyColorChanges() {
+            for (const cssVar in targets) {
+                const inputId = targets[cssVar];
+                if (elements[inputId] && cssVar.startsWith('--')) {
+                    document.documentElement.style.setProperty(cssVar, elements[inputId].value);
+                }
+            }
+            document.documentElement.style.setProperty('--primary-dark', elements.footerBgColor.value);
+        }
+
+        // Event listener para el botón de Guardar
+        saveBtn.addEventListener('click', () => {
+            applyTextChanges();
+            applyColorChanges();
+            alert('¡Cambios guardados! 🎉');
+        });
+
+        // Event listener para los cambios en los inputs
+        for (const inputId in elements) {
+            if (elements[inputId].type === 'color') {
+                elements[inputId].addEventListener('input', applyColorChanges);
+            } else {
+                elements[inputId].addEventListener('input', applyTextChanges);
+            }
+        }
+
+        // Restaurar valores por defecto
+        resetBtn.addEventListener('click', () => {
+            const defaultValues = {
+                // Colores
+                primaryDarkColor: '#0A1A3A',
+                primaryMediumColor: '#1E3A6E',
+                accentGoldColor: '#C9B18D',
+                lightBgColor: '#F9F8F5',
+                textDarkColor: '#2D3748',
+                footerBgColor: '#0A1A3A',
+                // Textos
+                mainTitleInput: 'Abogado Diego Tour',
+                heroDescriptionInput: 'Defender no siempre es un acto de justicia externa, a veces es una forma de calmar el propio silencio interior en un mundo que no deja de acusar.',
+                aboutTextInput: 'Nuestra oficina, dirigida por el Abogado Diego Tour, se dedica a proporcionar asesoría legal de la más alta calidad. Con años de experiencia y un profundo compromiso con nuestros clientes, abordamos cada caso con la meticulosidad y dedicación que se merece. Creemos que la justicia es un derecho fundamental y trabajamos incansablemente para garantizar que la voz de nuestros clientes sea escuchada y sus derechos sean protegidos. Nuestro enfoque es personalizado, estratégico y siempre transparente.',
+                contactTextInput: 'La Asesoría Legal que Usted Necesita, con Respeto y Calma. Como la naturaleza encuentra su equilibrio en la calma, así la justicia se construye desde el respeto y la paz.',
+                protectionSectionTitleInput: 'Protección Legal Integral',
+                service1TitleInput: 'Protección de Cliente',
+                service1DescInput: 'Nos comprometemos con la protección integral de nuestros clientes, garantizando en todo momento la privacidad y confidencialidad de su información personal. Brindamos un trato digno, honesto y transparente, asegurando una experiencia segura y confiable.',
+                service2TitleInput: 'Confidencialidad Absoluta',
+                service2DescInput: 'Su información y su caso son tratados con la más estricta confidencialidad. Valoramos su confianza y mantenemos rigurosos protocolos para asegurar que sus datos estén siempre seguros.',
+                service3TitleInput: 'Asesoría Personalizada',
+                service3DescInput: 'Cada caso es único. Nos dedicamos a entender sus necesidades específicas para ofrecerle una estrategia legal a medida, maximizando sus posibilidades de éxito.',
+                contactAddressInput: 'Av. San Martín 1234, Ciudad, País',
+                contactPhoneInput: '+54 11 1234 5678',
+                contactEmailInput: 'info@diegonotour.com',
+            };
+
+            for (const key in defaultValues) {
+                elements[key].value = defaultValues[key];
+            }
+            applyColorChanges();
+            applyTextChanges();
+            alert('¡Valores restaurados! ✨');
+        });
+
+        // Toggle del panel
+        panelToggle.addEventListener('click', () => {
+            customizationPanel.classList.toggle('open');
+            panelToggle.classList.toggle('open');
+        });
+
+        // Scroll suave para los botones de navegación
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            const mainContent = document.getElementById('main-content');
+            
+            // Simular un tiempo de carga
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.addEventListener('transitionend', () => {
+                    loader.style.display = 'none';
+                    mainContent.classList.add('content-visible');
+                }, { once: true });
+            }, 500);
+        });
+
+        // 🆕 NUEVA FUNCIÓN: Descargar el archivo HTML
+        downloadBtn.addEventListener('click', () => {
+            downloadHTML();
+        });
+
+        function downloadHTML() {
+            // 1. Aplicar todos los cambios finales al DOM antes de la descarga
+            applyColorChanges();
+            applyTextChanges();
+
+            // 2. Clona el documento actual para no modificar el original
+            const clonedDocument = document.cloneNode(true);
+
+            // 3. Oculta el panel de personalización y el botón de toggle en el clon
+            const panel = clonedDocument.getElementById('customizationPanel');
+            const toggle = clonedDocument.getElementById('panelToggle');
+            const loader = clonedDocument.getElementById('loader');
+            const script = clonedDocument.querySelector('script');
+
+            if (panel) panel.remove();
+            if (toggle) toggle.remove();
+            if (loader) loader.remove();
+            if (script) script.remove();
+            
+            // Eliminar la personalización de los atributos `value` en los inputs del panel clonado
+            // Esto es crucial para que el HTML descargado no muestre los valores personalizados por defecto
+            // En este caso, ya que eliminamos el panel, no es necesario, pero es una buena práctica.
+
+            // 4. Obtiene el HTML completo del documento modificado
+            const htmlContent = `<!DOCTYPE html>\n${clonedDocument.documentElement.outerHTML}`;
+
+            // 5. Crea un blob con el contenido HTML
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+
+            // 6. Crea un link de descarga y lo "clic-ea"
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'abogado-diegonotour.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>

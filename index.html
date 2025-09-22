@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Escuchar texto - Investigación</title>
+  <style>
+    :root{
+      --bg: #0f172a;
+      --card: #0b1220;
+      --accent: #06b6d4;
+      --muted: #94a3b8;
+      --text: #e6eef8;
+      --glass: rgba(255,255,255,0.03);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+      background: linear-gradient(180deg,#071028 0%, #071a2a 100%);
+      color:var(--text);
+          border-radius: 10px;
+  max-width: 1200px;
+  margin: 90px auto;
+    }
+    .card{
+      width:100%;
+      max-width:980px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:22px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    header{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:14px;
+         border-radius: 10px;
+  max-width:800px;
+  margin: 90px auto;
+    }
+    header h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing: -.2px;
+    }
+    .meta{
+      margin-left:auto;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .text-wrap{
+      background:var(--glass);
+      padding:18px;
+      border-radius:10px;
+      line-height:1.6;
+      color:var(--text);
+      font-size:15px;
+      white-space:pre-wrap;
+      margin-bottom:14px;
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    .controls{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+    select, input[type=range], button{
+      background:transparent;
+      color:var(--text);
+      border:1px solid rgba(255,255,255,0.06);
+      padding:8px 10px;
+      border-radius:8px;
+      font-size:14px;
+    }
+    label{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;}
+    .group{display:flex;gap:8px;align-items:center;}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),#3b82f6);
+      border:none;
+      color:#071028;
+      font-weight:600;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      box-shadow: 0 6px 18px rgba(6,182,212,0.12);
+    }
+    .btn-ghost{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.04);
+      cursor:pointer;
+      color:var(--text);
+    }
+    .small{font-size:13px;padding:8px 10px}
+    .info{margin-top:12px;color:var(--muted);font-size:13px}
+    .status{margin-left:8px;font-size:13px;color:var(--muted)}
+    video{
+      width:100%;
+      max-height:480px;
+      border-radius:12px;
+      margin-top:20px;
+      outline:none;
+    }
+    @media (max-width:640px){
+      .controls{flex-direction:column;align-items:stretch;}
+      header{flex-direction:column;align-items:flex-start;gap:4px;}
+    }
+
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+video {
+  max-width: 300px; /* Adjust this value as needed */
+  height: auto;
+  border: 4px solid #f0f0f0;
+  border-radius: 8px;
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+video:hover {
+  transform: scale(1.05);
+}
+ 
+
+        .container {
+            background-color:tan;
+            color: black;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        button {
+            background-color:thistle;
+            color:black;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+         * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 30px 0 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
+            border-bottom: 2px solid #f1f1f1;
+            padding-bottom: 10px;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+        }
+        
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f1f1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .icon {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .check {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .cross {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .disciplines-container {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        
+        .disciplines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .discipline-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .discipline-category h4 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .discipline-list {
+            list-style-type: none;
+        }
+        
+        .discipline-list li {
+            padding: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        .cta-button {
+            display: block;
+            width: fit-content;
+            margin: 30px auto;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-table {
+                grid-template-columns: 1fr;
+            }
+            
+            .disciplines-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+       
+        
+  </style>
+</head>
+<body>
+  <div class="card" role="main" style="color: black;" >
+    <header>
+      <h1> </h1>
+      <div class="meta"style="color: black;" >Idioma: español (puedes elegir la voz)</div>
+    </header>
+
+    <div id="texto" class="text-wrap" style="color: black;">
+
+Soy investigador privado y sé lo que pasa en la sociedad. A muchas personas no les gusta escuchar ciertas verdades, por eso prefieren que se borren los videos que las muestran. A mí no me interesa, porque somos libres de hablar, decir y no ocultar nada: no somos esclavos de nadie en la sociedad. Por esta razón, siempre hay que decir la verdad.
+No existe ninguna ley que diga que no podemos usar las redes sociales. No somos objetos ni esclavos para que nos prohíban hablar en plataformas como TikTok, Facebook, Instagram, Twitter u otros sitios web. Esos espacios están para compartir videos y comentar cosas importantes sobre la sociedad.
+Con la tecnología ya sea en notebooks, celulares o tablets somos libres de hablar y opinar sobre cualquier tema, desde aprendizajes y conocimientos o cuestiones de trabajo. Incluso en ámbitos como el poder judicial, donde muchas veces se engaña o se intenta sobornar a las personas, la verdad no debe estar en silencio. Por eso, aunque algunos quieran taparla con dinero, no se van a borrar los videos de Facebook, Instagram, Twitter o TikTok que muestran esas verdades.
+Cuando era menor de edad, con apenas 18 años, lo que querían los jueces y juezas era que yo buscara pleito contra todos los que me hicieron bullying, los que me agredieron y maltrataron en lo digital. Pero me di cuenta de que todo se movía por plata. Por esa razón no acepté, porque uno en la vida debe ser inteligente y no obsesionarse con el dinero, como sí lo hace el poder judicial, que parece vivir solo para eso, sin importarles la persona.
+
+No les importa si sos estudiante de primaria, secundaria, universitario o si trabajás en cualquier oficio o profesión. Lo único que les interesa es el dinero, sin parar. Y en eso también están involucrados jueces, juezas e incluso la policía civil que los respalda.
+Siempre decir la verdad importa para la sociedad, la ciudad y la población. La verdad es la gran esperanza frente a la manipulación y al engaño que el gobierno y la política usan para confundir a las personas, intentando borrar los videos que muestran lo que realmente pasa. A mí no me van a manipular ni me van a sobornar, porque el dinero no me importa: hoy en día el papel ya no vale nada. Nos hacen creer que sin plata no hay comida ni salud, pero la verdadera trampa es la obsesión por el dinero. Al final, todos vamos al mismo lugar: la muerte, el cementerio. Lo único que queda es la huella que dejamos: los videos de verdad en redes sociales como TikTok, Facebook, Instagram o Twitter, o en sitios web donde compartimos aprendizaje, carreras universitarias, cursos o la verdad sobre un trabajo o laburo. La riqueza, las casas, los autos o las motos no se llevan; lo único que trasciende es la verdad que decimos y compartimos. Vivimos la vida, pero en la muerte nada de lo material nos acompaña: ni el dinero, ni el auto, ni la moto, ni las casas. 
+    </div>
+
+    <div class="controls">
+      <div class="group"style="color: black;" >
+        <label for="voices" style="color: black;">Voz
+          <select id="voices"style="color: black;" >
+            <option value=""style="color: black;" >(cargando voces...)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="group"style="color: black;" >
+        <label for="rate"style="color: black;" >Velocidad <span id="rateVal"style="color: black;" >1.0</span>
+          <input id="rate" type="range" min="0.5" max="2.0" step="0.1" value="1.0" style="color: black;"/>
+        </label>
+      </div>
+
+      <div class="group"style="color: black;" >
+        <label for="pitch" style="color: black;">Tono <span id="pitchVal"style="color: black;" >1.0</span>
+          <input id="pitch" type="range" min="0.5" max="2.0" step="0.1" value="1.0" style="color: black;"/>
+        </label>
+      </div>
+
+      <div class="group" style="margin-left:auto">
+     <button id="speakBtn" class="btn-primary" type="button" style="color: black; font-size: 18px; padding: 10px 20px;">Escuchar</button>
+<button id="pauseBtn" class="btn-ghost" type="button" style="color: black; font-size: 18px; padding: 10px 20px;">Pausar</button>
+<button id="stopBtn" class="btn-ghost" type="button" style="color: black; font-size: 18px; padding: 10px 20px;">Detener</button>
+
+      </div>
+    </div>
+
+    <div class="info" id="info" style="color: black;" >
+      Estado: <span id="estado" style="color: black;">listo</span>
+      <span class="status" id="voiceInfo" style="color: black;" ></span>
+    </div>
+
+    <div class="video-container">
+  <video controls>
+    <source src="video2.mp4" type="video/mp4">
+    Tu navegador no soporta el formato de video.
+  </video>
+
+  <video controls>
+    <source src="video3.mp4" type="video/mp4">
+    Tu navegador no soporta el formato de video.
+  </video>
+
+  <video controls>
+    <source src="video4.mp4" type="video/mp4">
+    Tu navegador no soporta el formato de video.
+  </video>
+</div>
+  <div class="container">
+        <header>
+            <h1>¿Querés practicar gratis? Así de fácil</h1>
+            <p>No tenés que hacer matemática, usar símbolos, álgebra ni cálculos. No tenés que hacer nada, simplemente es fácil.</p>
+        </header>
+        
+        <h2>¿Qué necesitás para participar?</h2>
+        <div class="comparison-table">
+            <div class="card">
+                <h3>Características de la práctica</h3>
+                <ul class="feature-list">
+                    <li><span class="icon check">✓</span> Totalmente gratuita</li>
+                    <li><span class="icon check">✓</span> Sin requisitos matemáticos</li>
+                    <li><span class="icon check">✓</span> Sin álgebra ni cálculos</li>
+                    <li><span class="icon check">✓</span> Accesible para todas las disciplinas</li>
+                    <li><span class="icon check">✓</span> Sin conocimientos previos necesarios</li>
+                    <li><span class="icon check">✓</span> Fácil de usar</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>¿A quién está dirigida?</h3>
+                <ul class="feature-list">
+                    <li><span class="icon check">✓</span> Profesionales de todas las áreas</li>
+                    <li><span class="icon check">✓</span> Trabajadores de cualquier sector</li>
+                    <li><span class="icon check">✓</span> Estudiantes de todas las disciplinas</li>
+                    <li><span class="icon check">✓</span> Ciencias exactas y naturales</li>
+                    <li><span class="icon check">✓</span> Artes y humanidades</li>
+                    <li><span class="icon check">✓</span> Todas las profesiones existentes</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2>Disciplinas que pueden participar</h2>
+        <div class="disciplines-container">
+            <div class="disciplines-grid">
+                <div class="discipline-category">
+                    <h4>Ciencias Sociales</h4>
+                    <ul class="discipline-list">
+                        <li>Sociología</li>
+                        <li>Psicología</li>
+                        <li>Antropología</li>
+                        <li>Trabajo Social</li>
+                        <li>Derecho</li>
+                    </ul>
+                </div>
+                
+                <div class="discipline-category">
+                    <h4>Salud</h4>
+                    <ul class="discipline-list">
+                        <li>Medicina</li>
+                        <li>Enfermería</li>
+                        <li>Kinesiología</li>
+                        <li>Nutrición</li>
+                        <li>Veterinaria</li>
+                    </ul>
+                </div>
+                
+                <div class="discipline-category">
+                    <h4>Ingeniería y Tecnología</h4>
+                    <ul class="discipline-list">
+                        <li>Ingeniería Civil</li>
+                        <li>Ingeniería Industrial</li>
+                        <li>Informática</li>
+                        <li>Arquitectura</li>
+                        <li>Diseño</li>
+                    </ul>
+                </div>
+                
+                <div class="discipline-category">
+                    <h4>Artes y Humanidades</h4>
+                    <ul class="discipline-list">
+                        <li>Música</li>
+                        <li>Artes Plásticas</li>
+                        <li>Literatura</li>
+                        <li>Filosofía</li>
+                        <li>Historia</li>
+                    </ul>
+                </div>
+                
+                <div class="discipline-category">
+                    <h4>Negocios y Administración</h4>
+                    <ul class="discipline-list">
+                        <li>Administración</li>
+                        <li>Contabilidad</li>
+                        <li>Marketing</li>
+                        <li>Recursos Humanos</li>
+                        <li>Turismo</li>
+                    </ul>
+                </div>
+                
+                <div class="discipline-category">
+                    <h4>Ciencias Exactas</h4>
+                    <ul class="discipline-list">
+                        <li>Matemática</li>
+                        <li>Física</li>
+                        <li>Química</li>
+                        <li>Biología</li>
+                        <li>Astronomía</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <a href="webgratiscrea.html" class="cta-button">Crear tu web gratis</a>
+      <h2 style="color: black;">
+  La matemática que enseña una profesora de secundaria no es la misma que la matemática que utiliza un programador.
+  Por eso, no tiene sentido preguntarle a alguien que no sabe de programación, porque no podrá dar la respuesta correcta.
+  La matemática de un programador es diferente a la matemática escolar, incluso aunque la persona tenga educación o profesión en licenciatura o profesorado/a en matemática.
+</h2>
+
+<h2 style="color: black;">
+  Eso sí, tené cuidado: muchos profesores de matemática dicen saber la matemática aplicada a la programación, pero eso puede ser mentira. 
+  No te enseñan bien el álgebra booleana que utiliza un programador ni los conceptos avanzados del cero y uno. 
+  A veces buscan aprovechar la confianza para sacar dinero, lo cual sería una especie de estafa por parte de profesores que no saben del tema y mintieron a la persona.
+</h2>
+
+    </div>
+  <script>
+    // (JS de síntesis de voz igual que antes)
+    const textoEl = document.getElementById('texto');
+    const speakBtn = document.getElementById('speakBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const voicesSelect = document.getElementById('voices');
+    const rateEl = document.getElementById('rate');
+    const pitchEl = document.getElementById('pitch');
+    const rateVal = document.getElementById('rateVal');
+    const pitchVal = document.getElementById('pitchVal');
+    const estadoEl = document.getElementById('estado');
+    const voiceInfo = document.getElementById('voiceInfo');
+
+    let synth = window.speechSynthesis;
+    let utterance = null;
+    let currentText = textoEl.innerText.trim();
+
+    function actualizarEstado(t){ estadoEl.textContent = t; }
+
+    function populateVoices(){
+      const voices = synth.getVoices();
+      voicesSelect.innerHTML = '';
+      if(!voices || voices.length === 0){
+        const o = document.createElement('option');
+        o.textContent = '(no hay voces disponibles)';
+        voicesSelect.appendChild(o);
+        return;
+      }
+      const esVoces = voices.filter(v => /^es/i.test(v.lang));
+      const ordered = esVoces.concat(voices.filter(v => !/^es/i.test(v.lang)));
+
+      ordered.forEach(v=>{
+        const o = document.createElement('option');
+        o.value = v.name + '||' + v.lang;
+        o.textContent = `${v.name} — ${v.lang}`;
+        o.dataset.name = v.name;
+        o.dataset.lang = v.lang;
+        voicesSelect.appendChild(o);
+      });
+
+      const prefer = [...voices].find(v => v.lang.toLowerCase().includes('es-ar')) ||
+                     [...voices].find(v => v.lang.toLowerCase().includes('es-es')) ||
+                     ordered[0];
+      if(prefer){
+        for(let i=0;i<voicesSelect.options.length;i++){
+          if(voicesSelect.options[i].dataset.name === prefer.name){
+            voicesSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      voiceInfo.textContent = `Voces detectadas: ${voices.length}`;
+    }
+
+    populateVoices();
+    if (typeof speechSynthesis !== 'undefined') {
+      speechSynthesis.onvoiceschanged = populateVoices;
+    }
+
+    rateEl.addEventListener('input', ()=> rateVal.textContent = rateEl.value);
+    pitchEl.addEventListener('input', ()=> pitchVal.textContent = pitchEl.value);
+
+    function createUtterance(text){
+      const u = new SpeechSynthesisUtterance(text);
+      const sel = voicesSelect.selectedOptions[0];
+      if(sel && sel.dataset.name){
+        const voices = synth.getVoices();
+        const v = voices.find(x => x.name === sel.dataset.name && x.lang === sel.dataset.lang);
+        if(v) u.voice = v;
+      }
+      u.lang = (u.voice && u.voice.lang) ? u.voice.lang : 'es-AR';
+      u.rate = parseFloat(rateEl.value) || 1.0;
+      u.pitch = parseFloat(pitchEl.value) || 1.0;
+      u.onstart = ()=> actualizarEstado('reproduciendo');
+      u.onend = ()=> actualizarEstado('finalizado');
+      u.onpause = ()=> actualizarEstado('pausado');
+      u.onresume = ()=> actualizarEstado('reproduciendo');
+      u.onerror = (e)=> { actualizarEstado('error: ' + (e.error || 'desconocido')); }
+      return u;
+    }
+
+    speakBtn.addEventListener('click', () => {
+      if(!synth){ alert('Tu navegador no soporta SpeechSynthesis API.'); return; }
+      if(synth.paused && synth.speaking){
+        synth.resume(); actualizarEstado('reproduciendo'); return;
+      }
+      if(synth.speaking){ synth.cancel(); }
+      currentText = textoEl.innerText.trim();
+      utterance = createUtterance(currentText);
+      synth.speak(utterance);
+    });
+
+    pauseBtn.addEventListener('click', ()=>{
+      if(!synth) return;
+      if(synth.speaking && !synth.paused){
+        synth.pause(); actualizarEstado('pausado'); pauseBtn.textContent = 'Reanudar';
+      } else if(synth.paused){
+        synth.resume(); actualizarEstado('reproduciendo'); pauseBtn.textContent = 'Pausar';
+      }
+    });
+
+    stopBtn.addEventListener('click', ()=>{
+      if(!synth) return;
+      if(synth.speaking || synth.paused){
+        synth.cancel(); actualizarEstado('detenido'); pauseBtn.textContent = 'Pausar';
+      }
+    });
+    actualizarEstado('listo');
+     // Lista de videos
+  const videos = [
+    "video1.mp4",
+    "video2.mp4",
+    "video3.mp4",
+    "video4.mp4"
+  ];
+  
+  const videoPlayer = document.getElementById("videoPlayer");
+  let currentVideo = 0;
+
+  // Cuando termine un video, cargamos el siguiente
+  videoPlayer.addEventListener('ended', function() {
+    currentVideo++;
+    if (currentVideo < videos.length) {
+      videoPlayer.src = videos[currentVideo];
+      videoPlayer.play();
+    }
+  });
+  </script>
+</body>
+</html>

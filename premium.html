@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalizador Web - Vista Previa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #4f46e5;
+            --accent: #ec4899;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --transition: all 0.3s ease;
+            --font-main: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-heading: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --hero-bg: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            --font-size-base: 16px;
+            --spacing: 1rem;
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+        
+        body {
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            transition: var(--transition);
+            font-size: var(--font-size-base);
+            margin-left: 320px; /* Espacio para el panel de personalización */
+                border-radius: 10px;
+  max-width:700px;
+  margin: 90px auto;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--dark);
+            margin-bottom: calc(var(--spacing) * 0.5);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: calc(var(--spacing) * 5) 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: calc(var(--spacing) * 3);
+            font-size: 2.5rem;
+        }
+        
+        .section-title span {
+            color: var(--primary);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 320px; /* Ajuste para el panel de personalización */
+            width: calc(100% - 320px);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: var(--transition);
+                border-radius: 10px;
+  max-width:800px;
+  margin: 90px auto;
+                
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            background: var(--hero-bg);
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Sección Nosotros */
+        .about {
+            background-color: #f8fafc;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .about-description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: var(--gray);
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Panel de Personalización Fijo */
+        .customizer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            z-index: 1001;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+                border-radius: 10px;
+  max-width:700px;
+  margin: 90px auto;
+        }
+        
+        .customizer-header {
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .customizer-title {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .customizer-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            background: #f8fafc;
+            position: sticky;
+            top: 73px;
+            z-index: 10;
+        }
+        
+        .customizer-tab {
+            padding: 12px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            font-size: 0.9rem;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .customizer-tab.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .customizer-content {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .customizer-tab-content {
+            display: none;
+        }
+        
+        .customizer-tab-content.active {
+            display: block;
+        }
+        
+        .customizer-group {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .customizer-group:last-child {
+            border-bottom: none;
+        }
+        
+        .customizer-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .color-picker {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid #eee;
+        }
+        
+        .color-option.active {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 3px white, 0 0 0 5px var(--primary);
+        }
+        
+        .font-option {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 8px;
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .font-option.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .text-editor {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .text-editor:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+        }
+        
+        .bg-option {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid #eee;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .bg-option.active {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 3px white, 0 0 0 5px var(--primary);
+        }
+        
+        .range-slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .reset-btn {
+            width: 100%;
+            margin-top: 10px;
+            background: #ef4444;
+        }
+        
+        .reset-btn:hover {
+            background: #dc2626;
+        }
+        
+        .save-btn {
+            width: 100%;
+            margin-top: 10px;
+            background: #10b981;
+        }
+        
+        .save-btn:hover {
+            background: #059669;
+        }
+        
+        .download-btn {
+            width: 100%;
+            margin-top: 10px;
+            background: #3b82f6;
+        }
+        
+        .download-btn:hover {
+            background: #2563eb;
+        }
+        
+        .file-upload {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px dashed #ccc;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary);
+            background-color: #f0f9ff;
+        }
+        
+        .upload-preview {
+            width: 100%;
+            max-height: 150px;
+            object-fit: contain;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            body {
+                margin-left: 0;
+            }
+            
+            header {
+                left: 0;
+                width: 100%;
+            }
+            
+            .customizer {
+                left: -320px;
+                box-shadow: none;
+                transition: var(--transition);
+            }
+            
+            .customizer.open {
+                left: 0;
+                box-shadow: 5px 0 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .customizer-toggle {
+                position: fixed;
+                left: 20px;
+                top: 20px;
+                width: 50px;
+                height: 50px;
+                background: var(--primary);
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.5rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content, .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .customizer {
+                width: 100%;
+                left: -100%;
+            }
+            
+            .customizer.open {
+                left: 0;
+            }
+            
+            .customizer-toggle {
+                left: 15px;
+                top: 15px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        .btn-atras {
+    position: fixed;           
+    top:25px;                  
+    left: 50%;                 
+    transform: translate(-50%, -50%);
+
+    background-color: #3498db; 
+    color: white;              
+    font-size: 18px;           
+    padding: 10px 40px;        /* más ancho que alto */
+    border: none;
+    border-radius: 8px;        
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-atras:hover {
+    background-color: #2980b9; 
+    transform: translate(-50%, -50%) scale(1.05); 
+}
+    </style>
+</head>
+<body>
+    <!-- Panel de Personalización Fijo -->
+    <div class="customizer">
+        <div class="customizer-header"><button class="btn-atras" onclick="location.href='webgratiscrea.html'">Volver atrás</button>
+            <h3 class="customizer-title">Personalizador Web</h3>
+        </div>
+        
+        <div class="customizer-tabs">
+            <div class="customizer-tab active" data-tab="colors">Colores</div>
+            <div class="customizer-tab" data-tab="text">Texto</div>
+            <div class="customizer-tab" data-tab="images">Imágenes</div>
+            <div class="customizer-tab" data-tab="advanced">Avanzado</div>
+        </div>
+        
+        <div class="customizer-content">
+            <!-- Pestaña de Colores -->
+            <div class="customizer-tab-content active" id="colors-tab">
+                <div class="customizer-group">
+                    <label class="customizer-label">Color Principal</label>
+                    <div class="color-picker">
+                        <div class="color-option active" style="background: #2563eb;" data-color="#2563eb"></div>
+                        <div class="color-option" style="background: #10b981;" data-color="#10b981"></div>
+                        <div class="color-option" style="background: #8b5cf6;" data-color="#8b5cf6"></div>
+                        <div class="color-option" style="background: #f59e0b;" data-color="#f59e0b"></div>
+                        <div class="color-option" style="background: #ec4899;" data-color="#ec4899"></div>
+                        <div class="color-option" style="background: #ef4444;" data-color="#ef4444"></div>
+                    </div>
+                    <input type="color" id="custom-primary-color" class="text-editor" value="#2563eb" style="width: 100%; height: 40px; padding: 3px;">
+                </div>
+                
+                <div class="customizer-group">
+                    <label class="customizer-label">Color Secundario</label>
+                    <div class="color-picker">
+                        <div class="color-option active" style="background: #4f46e5;" data-color-secondary="#4f46e5"></div>
+                        <div class="color-option" style="background: #059669;" data-color-secondary="#059669"></div>
+                        <div class="color-option" style="background: #7c3aed;" data-color-secondary="#7c3aed"></div>
+                        <div class="color-option" style="background: #d97706;" data-color-secondary="#d97706"></div>
+                        <div class="color-option" style="background: #db2777;" data-color-secondary="#db2777"></div>
+                        <div class="color-option" style="background: #dc2626;" data-color-secondary="#dc2626"></div>
+                    </div>
+                    <input type="color" id="custom-secondary-color" class="text-editor" value="#4f46e5" style="width: 100%; height: 40px; padding: 3px;">
+                </div>
+                
+                <div class="customizer-group">
+                    <label class="customizer-label">Color de Acento</label>
+                    <div class="color-picker">
+                        <div class="color-option active" style="background: #ec4899;" data-color-accent="#ec4899"></div>
+                        <div class="color-option" style="background: #3b82f6;" data-color-accent="#3b82f6"></div>
+                        <div class="color-option" style="background: #f97316;" data-color-accent="#f97316"></div>
+                        <div class="color-option" style="background: #a855f7;" data-color-accent="#a855f7"></div>
+                        <div class="color-option" style="background: #14b8a6;" data-color-accent="#14b8a6"></div>
+                        <div class="color-option" style="background: #84cc16;" data-color-accent="#84cc16"></div>
+                    </div>
+                    <input type="color" id="custom-accent-color" class="text-editor" value="#ec4899" style="width: 100%; height: 40px; padding: 3px;">
+                </div>
+                
+                <div class="customizer-group">
+                    <label class="customizer-label">Color de Fondo</label>
+                    <div class="color-picker">
+                        <div class="color-option active" style="background: #f8fafc;" data-bg="#f8fafc"></div>
+                        <div class="color-option" style="background: #f1f5f9;" data-bg="#f1f5f9"></div>
+                        <div class="color-option" style="background: #fffbeb;" data-bg="#fffbeb"></div>
+                        <div class="color-option" style="background: #fef2f2;" data-bg="#fef2f2"></div>
+                        <div class="color-option" style="background: #f0fdf4;" data-bg="#f0fdf4"></div>
+                        <div class="color-option" style="background: #f0f9ff;" data-bg="#f0f9ff"></div>
+                    </div>
+                    <input type="color" id="custom-bg-color" class="text-editor" value="#f8fafc" style="width: 100%; height: 40px; padding: 3px;">
+                </div>
+                
+                <div class="customizer-group">
+                    <label class="customizer-label">Fondo del Hero</label>
+                    <div class="color-picker">
+                        <div class="bg-option active" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);" data-hero-bg="linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)"></div>
+                        <div class="bg-option" style="background: linear-gradient(135deg, #e0f2fe 0%, #93c5fd 100%);" data-hero-bg="linear-gradient(135deg, #e0f2fe 0%, #93c5fd 100%)"></div>
+                        <div class="bg-option" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);" data-hero-bg="linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%)"></div>
+                        <div class="bg-option" style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);" data-hero-bg="linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pestaña de Texto -->
+            <div class="customizer-tab-content" id="text-tab">
+                <div class="customizer-group">
+                    <label class="customizer-label">Fuente Principal</label>
+                    <select id="font-select" class="text-editor">
+                        <option value="'Inter', 'Segoe UI', sans-serif" selected>Inter</option>
+                        <option value="'Arial', sans-serif">Arial</option>
+                        <option value="'Georgia', serif">Georgia</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                        <option value="'Verdana', sans-serif">Verdana</option>
+                    </select>
+                </div>
+                
+                <div class="customizer-group">
+                    <label class="customizer-label">Tamaño de Fuente Base</label>
+                    <input type="range" min="12" max="20" value="16" class="range-slider" id="font-size-slider">
+                    <span id="font-size-value">16px</span>
+                </div>
+                
+                <div class="customizer-group">
+                    <label class="customizer-label">Espaciado General</label>
+                    <input type="range" min="0.8" max="2" step="0.1" value="1" class="range-slider" id="spacing-slider">
+                    <span id="spacing-value">1rem</span>
+                </div>
+                
+                <div class="customizer-group">
+                    <label class="customizer-label">Radio de Bordes</label>
+                    <input type="range" min="0" max="20" value="8" class="range-slider" id="border-radius-slider">
+                    <span id="border-radius-value">8px</span>
+                </div>
+            </div>
+            
+            <!-- Pestaña de Imágenes -->
+            <div class="customizer-tab-content" id="images-tab">
+                <div class="customizer-group">
+                    <label class="customizer-label">Imagen Hero</label>
+                    <input type="text" class="text-editor" id="edit-hero-img" placeholder="URL imagen hero" value="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
+                    <button class="btn" id="reset-hero-img" style="width: 100%; margin-top: 5px;">Restablecer Imagen</button>
+                </div>
+                
+                <div class="customizer-group">
+                    <label class="customizer-label">Imagen Nosotros</label>
+                    <input type="text" class="text-editor" id="edit-about-img" placeholder="URL imagen nosotros" value="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80">
+                    <button class="btn" id="reset-about-img" style="width: 100%; margin-top: 5px;">Restablecer Imagen</button>
+                </div>
+            </div>
+            
+            <!-- Pestaña Avanzado -->
+            <div class="customizer-tab-content" id="advanced-tab">
+                <div class="customizer-group">
+                    <label class="customizer-label">Carga de Imágenes</label>
+                    <p class="customizer-label" style="font-weight: normal; margin-bottom: 15px;">Sube tus propias imágenes para personalizar completamente tu web</p>
+                    
+                    <label class="customizer-label">Imagen Hero</label>
+                    <input type="file" id="upload-hero-img" class="file-upload" accept="image/*">
+                    <img id="preview-hero-img" class="upload-preview" alt="Vista previa">
+                    
+                    <label class="customizer-label">Imagen Nosotros</label>
+                    <input type="file" id="upload-about-img" class="file-upload" accept="image/*">
+                    <img id="preview-about-img" class="upload-preview" alt="Vista previa">
+                    
+                    <label class="customizer-label">Logo Personalizado</label>
+                    <input type="file" id="upload-logo" class="file-upload" accept="image/*">
+                    <img id="preview-logo" class="upload-preview" alt="Vista previa">
+                </div>
+                
+                <div class="customizer-group">
+                    <label class="customizer-label">Editor de Texto Completo</label>
+                    <input type="text" class="text-editor" id="edit-logo" placeholder="Texto del logo" value="MiWebPro">
+                    <input type="text" class="text-editor" id="edit-nav-inicio" placeholder="Texto navegación Inicio" value="Inicio">
+                    <input type="text" class="text-editor" id="edit-nav-servicios" placeholder="Texto navegación Servicios" value="Servicios">
+                    <input type="text" class="text-editor" id="edit-nav-nosotros" placeholder="Texto navegación Nosotros" value="Nosotros">
+                    <input type="text" class="text-editor" id="edit-nav-contacto" placeholder="Texto navegación Contacto" value="Contacto">
+                    <input type="text" class="text-editor" id="edit-hero-title" placeholder="Título principal" value="Creamos Soluciones Digitales para tu Negocio">
+                    <textarea class="text-editor" id="edit-hero-subtitle" placeholder="Subtítulo principal" rows="3">Impulsa tu presencia en línea con nuestros servicios profesionales de desarrollo web, diseño y marketing digital.</textarea>
+                    <input type="text" class="text-editor" id="edit-btn-comenzar" placeholder="Texto botón principal" value="Comenzar Ahora">
+                    <input type="text" class="text-editor" id="edit-btn-servicios" placeholder="Texto botón secundario" value="Nuestros Servicios">
+                    <input type="text" class="text-editor" id="edit-services-title" placeholder="Título sección servicios" value="Nuestros Servicios">
+                    
+                    <input type="text" class="text-editor" id="edit-service1-title" placeholder="Título servicio 1" value="Desarrollo Web">
+                    <textarea class="text-editor" id="edit-service1-desc" placeholder="Descripción servicio 1" rows="2">Creación de sitios web modernos, responsivos y optimizados para motores de búsqueda.</textarea>
+                    
+                    <input type="text" class="text-editor" id="edit-service2-title" placeholder="Título servicio 2" value="Apps Móviles">
+                    <textarea class="text-editor" id="edit-service2-desc" placeholder="Descripción servicio 2" rows="2">Desarrollo de aplicaciones nativas e híbridas para iOS y Android con excelente UX.</textarea>
+                    
+                    <input type="text" class="text-editor" id="edit-service3-title" placeholder="Título servicio 3" value="Marketing Digital">
+                    <textarea class="text-editor" id="edit-service3-desc" placeholder="Descripción servicio 3" rows="2">Estrategias de marketing online para aumentar tu presencia digital y generar leads.</textarea>
+                    
+                    <input type="text" class="text-editor" id="edit-service4-title" placeholder="Título servicio 4" value="Diseño UX/UI">
+                    <textarea class="text-editor" id="edit-service4-desc" placeholder="Descripción servicio 4" rows="2">Diseño de interfaces intuitivas y atractivas que mejoran la experiencia del usuario.</textarea>
+                    
+                    <input type="text" class="text-editor" id="edit-about-title" placeholder="Título sección nosotros" value="Sobre Nosotros">
+                    <input type="text" class="text-editor" id="edit-about-subtitle" placeholder="Subtítulo nosotros" value="Nuestra Historia">
+                    <textarea class="text-editor" id="edit-about-desc" placeholder="Descripción nosotros" rows="3">Somos una agencia digital con más de 10 años de experiencia ayudando a empresas a transformar su presencia digital. Nuestro equipo de expertos combina creatividad y tecnología para ofrecer soluciones innovadoras que generan resultados tangibles.</textarea>
+                    
+                    <input type="text" class="text-editor" id="edit-stat1-number" placeholder="Número estadística 1" value="200+">
+                    <input type="text" class="text-editor" id="edit-stat1-text" placeholder="Texto estadística 1" value="Proyectos Completados">
+                    
+                    <input type="text" class="text-editor" id="edit-stat2-number" placeholder="Número estadística 2" value="50+">
+                    <input type="text" class="text-editor" id="edit-stat2-text" placeholder="Texto estadística 2" value="Clientes Satisfechos">
+                    
+                    <input type="text" class="text-editor" id="edit-stat3-number" placeholder="Número estadística 3" value="15+">
+                    <input type="text" class="text-editor" id="edit-stat3-text" placeholder="Texto estadística 3" value="Expertos en Equipo">
+                    
+                    <input type="text" class="text-editor" id="edit-stat4-number" placeholder="Número estadística 4" value="10+">
+                    <input type="text" class="text-editor" id="edit-stat4-text" placeholder="Texto estadística 4" value="Años de Experiencia">
+                    
+                    <input type="text" class="text-editor" id="edit-footer-logo" placeholder="Texto logo footer" value="MiWebPro">
+                    <textarea class="text-editor" id="edit-footer-desc" placeholder="Descripción footer" rows="2">Somos una agencia digital especializada en desarrollo web, aplicaciones móviles y marketing digital.</textarea>
+                    <input type="text" class="text-editor" id="edit-footer-contact-title" placeholder="Título contacto" value="Contacto">
+                    <input type="text" class="text-editor" id="edit-footer-address" placeholder="Dirección" value="Av. Principal #123, Ciudad">
+                    <input type="text" class="text-editor" id="edit-footer-phone" placeholder="Teléfono" value="+1 234 567 8900">
+                    <input type="text" class="text-editor" id="edit-footer-email" placeholder="Email" value="info@miwebpro.com">
+                    <input type="text" class="text-editor" id="edit-footer-copyright" placeholder="Texto copyright" value="MiWebPro">
+                </div>
+            </div>
+        </div>
+        
+        <div style="padding: 0 20px 20px;">
+            <button class="btn save-btn" id="saveStyles">Guardar Cambios</button>
+            <button class="btn download-btn" id="downloadHtml">Descargar HTML</button>
+            <button class="btn reset-btn" id="resetStyles">Restablecer Todo</button>
+        </div>
+    </div>
+
+    <!-- Botón para mostrar/ocultar panel en móviles -->
+    <div class="customizer-toggle">
+        <i class="fas fa-palette"></i>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container navbar">
+            <a href="#" class="logo" id="logo-text">MiWeb<span id="logo-accent">Pro</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#hero" class="nav-link" id="nav-inicio">Inicio</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link" id="nav-servicios">Servicios</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link" id="nav-nosotros">Nosotros</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link" id="nav-contacto">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title" id="hero-title">Creamos Soluciones Digitales para tu Negocio</h1>
+                <p class="hero-subtitle" id="hero-subtitle">Impulsa tu presencia en línea con nuestros servicios profesionales de desarrollo web, diseño y marketing digital.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn" id="btn-comenzar">Comenzar Ahora</a>
+                    <a href="#services" class="btn" style="background: var(--accent);" id="btn-servicios">Nuestros Servicios</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Desarrollo web y aplicaciones" id="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title" id="services-title">Nuestros <span>Servicios</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="service-title" id="service1-title">Desarrollo Web</h3>
+                    <p id="service1-desc">Creación de sitios web modernos, responsivos y optimizados para motores de búsqueda.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="service-title" id="service2-title">Apps Móviles</h3>
+                    <p id="service2-desc">Desarrollo de aplicaciones nativas e híbridas para iOS y Android con excelente UX.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title" id="service3-title">Marketing Digital</h3>
+                    <p id="service3-desc">Estrategias de marketing online para aumentar tu presencia digital y generar leads.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="service-title" id="service4-title">Diseño UX/UI</h3>
+                    <p id="service4-desc">Diseño de interfaces intuitivas y atractivas que mejoran la experiencia del usuario.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title" id="about-title">Sobre <span>Nosotros</span></h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 class="about-title" id="about-subtitle">Nuestra Historia</h3>
+                    <p class="about-description" id="about-desc">Somos una agencia digital con más de 10 años de experiencia ayudando a empresas a transformar su presencia digital. Nuestro equipo de expertos combina creatividad y tecnología para ofrecer soluciones innovadoras que generan resultados tangibles.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="stat1-number">200+</div>
+                            <div class="stat-text" id="stat1-text">Proyectos Completados</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="stat2-number">50+</div>
+                            <div class="stat-text" id="stat2-text">Clientes Satisfechos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="stat3-number">15+</div>
+                            <div class="stat-text" id="stat3-text">Expertos en Equipo</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="stat4-number">10+</div>
+                            <div class="stat-text" id="stat4-text">Años de Experiencia</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Nuestro equipo" id="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <h3 class="footer-logo" id="footer-logo">MiWebPro</h3>
+                    <p id="footer-desc">Somos una agencia digital especializada en desarrollo web, aplicaciones móviles y marketing digital.</p>
+           
+
+                </div>
+                <div class="footer-contact">
+                    <h3 class="footer-title" id="footer-contact-title">Contacto</h3>
+                    <p id="footer-address"><i class="fas fa-map-marker-alt"></i> Av. Principal #123, Ciudad</p>
+                    <p id="footer-phone"><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                    <p id="footer-email"><i class="fas fa-envelope"></i> info@miwebpro.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 <span id="footer-copyright">MiWebPro</span>. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación responsive
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Personalizador de estilos
+        const customizerToggle = document.querySelector('.customizer-toggle');
+        const customizer = document.querySelector('.customizer');
+        const customizerTabs = document.querySelectorAll('.customizer-tab');
+        const resetBtn = document.getElementById('resetStyles');
+        const saveBtn = document.getElementById('saveStyles');
+        const downloadBtn = document.getElementById('downloadHtml');
+        
+        // Abrir/cerrar personalizador en móviles
+        customizerToggle.addEventListener('click', () => {
+            customizer.classList.toggle('open');
+        });
+        
+        // Cambiar pestañas
+        customizerTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                // Desactivar todas las pestañas
+                document.querySelectorAll('.customizer-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Ocultar todos los contenidos
+                document.querySelectorAll('.customizer-tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Activar la pestaña seleccionada
+                tab.classList.add('active');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+        
+        // Cargar configuraciones guardadas
+        function loadSavedStyles() {
+            // Cargar colores
+            const primaryColor = localStorage.getItem('primaryColor');
+            const secondaryColor = localStorage.getItem('secondaryColor');
+            const accentColor = localStorage.getItem('accentColor');
+            const bgColor = localStorage.getItem('bgColor');
+            const heroBg = localStorage.getItem('heroBg');
+            
+            if (primaryColor) {
+                document.documentElement.style.setProperty('--primary', primaryColor);
+                updateActiveColorOption('.color-option[data-color]', primaryColor);
+                document.getElementById('custom-primary-color').value = primaryColor;
+            }
+            
+            if (secondaryColor) {
+                document.documentElement.style.setProperty('--secondary', secondaryColor);
+                updateActiveColorOption('.color-option[data-color-secondary]', secondaryColor);
+                document.getElementById('custom-secondary-color').value = secondaryColor;
+            }
+            
+            if (accentColor) {
+                document.documentElement.style.setProperty('--accent', accentColor);
+                updateActiveColorOption('.color-option[data-color-accent]', accentColor);
+                document.getElementById('custom-accent-color').value = accentColor;
+            }
+            
+            if (bgColor) {
+                document.documentElement.style.setProperty('--light', bgColor);
+                updateActiveColorOption('.color-option[data-bg]', bgColor);
+                document.getElementById('custom-bg-color').value = bgColor;
+            }
+            
+            if (heroBg) {
+                document.documentElement.style.setProperty('--hero-bg', heroBg);
+                updateActiveBgOption(heroBg);
+            }
+            
+            // Cargar fuentes y tamaños
+            const fontFamily = localStorage.getItem('fontFamily');
+            const fontSize = localStorage.getItem('fontSize');
+            const spacing = localStorage.getItem('spacing');
+            const borderRadius = localStorage.getItem('borderRadius');
+            
+            if (fontFamily) {
+                document.documentElement.style.setProperty('--font-main', fontFamily);
+                document.documentElement.style.setProperty('--font-heading', fontFamily);
+                document.getElementById('font-select').value = fontFamily;
+            }
+            
+            if (fontSize) {
+                document.documentElement.style.setProperty('--font-size-base', `${fontSize}px`);
+                document.getElementById('font-size-slider').value = fontSize;
+                document.getElementById('font-size-value').textContent = `${fontSize}px`;
+            }
+            
+            if (spacing) {
+                document.documentElement.style.setProperty('--spacing', `${spacing}rem`);
+                document.getElementById('spacing-slider').value = spacing;
+                document.getElementById('spacing-value').textContent = `${spacing}rem`;
+            }
+            
+            if (borderRadius) {
+                document.documentElement.style.setProperty('--border-radius', `${borderRadius}px`);
+                document.getElementById('border-radius-slider').value = borderRadius;
+                document.getElementById('border-radius-value').textContent = `${borderRadius}px`;
+            }
+            
+            // Cargar imágenes
+            const heroImg = localStorage.getItem('heroImg');
+            const aboutImg = localStorage.getItem('aboutImg');
+            
+            if (heroImg) {
+                document.getElementById('hero-img').src = heroImg;
+                document.getElementById('edit-hero-img').value = heroImg;
+            }
+            
+            if (aboutImg) {
+                document.getElementById('about-img').src = aboutImg;
+                document.getElementById('edit-about-img').value = aboutImg;
+            }
+            
+            // Cargar textos guardados
+            document.querySelectorAll('.text-editor').forEach(editor => {
+                if (editor.type !== 'color' && editor.type !== 'range') {
+                    const id = editor.id.replace('edit-', '');
+                    const savedValue = localStorage.getItem(id);
+                    if (savedValue) {
+                        editor.value = savedValue;
+                        if (id === 'logo') {
+                            document.getElementById('logo-text').textContent = savedValue;
+                        } else {
+                            const targetElement = document.getElementById(id);
+                            if (targetElement) {
+                                if (targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA') {
+                                    targetElement.value = savedValue;
+                                } else {
+                                    targetElement.textContent = savedValue;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Actualizar opción de color activa
+        function updateActiveColorOption(selector, value) {
+            document.querySelectorAll(selector).forEach(option => {
+                if (option.getAttribute('data-color') === value || 
+                    option.getAttribute('data-color-secondary') === value || 
+                    option.getAttribute('data-color-accent') === value || 
+                    option.getAttribute('data-bg') === value) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+        }
+        
+        // Actualizar opción de fondo activa
+        function updateActiveBgOption(value) {
+            document.querySelectorAll('.bg-option').forEach(option => {
+                if (option.getAttribute('data-hero-bg') === value) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+        }
+        
+        // Cambiar color principal
+        document.querySelectorAll('.color-option[data-color]').forEach(option => {
+            option.addEventListener('click', () => {
+                const color = option.getAttribute('data-color');
+                document.documentElement.style.setProperty('--primary', color);
+                localStorage.setItem('primaryColor', color);
+                document.getElementById('custom-primary-color').value = color;
+                
+                document.querySelectorAll('.color-option[data-color]').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                option.classList.add('active');
+            });
+        });
+        
+        // Selector de color personalizado - Principal
+        document.getElementById('custom-primary-color').addEventListener('input', function() {
+            const color = this.value;
+            document.documentElement.style.setProperty('--primary', color);
+            localStorage.setItem('primaryColor', color);
+            
+            document.querySelectorAll('.color-option[data-color]').forEach(opt => {
+                opt.classList.remove('active');
+            });
+        });
+        
+        // Cambiar color secundario
+        document.querySelectorAll('.color-option[data-color-secondary]').forEach(option => {
+            option.addEventListener('click', () => {
+                const color = option.getAttribute('data-color-secondary');
+                document.documentElement.style.setProperty('--secondary', color);
+                localStorage.setItem('secondaryColor', color);
+                document.getElementById('custom-secondary-color').value = color;
+                
+                document.querySelectorAll('.color-option[data-color-secondary]').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                option.classList.add('active');
+            });
+        });
+        
+        // Selector de color personalizado - Secundario
+        document.getElementById('custom-secondary-color').addEventListener('input', function() {
+            const color = this.value;
+            document.documentElement.style.setProperty('--secondary', color);
+            localStorage.setItem('secondaryColor', color);
+            
+            document.querySelectorAll('.color-option[data-color-secondary]').forEach(opt => {
+                opt.classList.remove('active');
+            });
+        });
+        
+        // Cambiar color de acento
+        document.querySelectorAll('.color-option[data-color-accent]').forEach(option => {
+            option.addEventListener('click', () => {
+                const color = option.getAttribute('data-color-accent');
+                document.documentElement.style.setProperty('--accent', color);
+                localStorage.setItem('accentColor', color);
+                document.getElementById('custom-accent-color').value = color;
+                
+                document.querySelectorAll('.color-option[data-color-accent]').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                option.classList.add('active');
+            });
+        });
+        
+        // Selector de color personalizado - Acento
+        document.getElementById('custom-accent-color').addEventListener('input', function() {
+            const color = this.value;
+            document.documentElement.style.setProperty('--accent', color);
+            localStorage.setItem('accentColor', color);
+            
+            document.querySelectorAll('.color-option[data-color-accent]').forEach(opt => {
+                opt.classList.remove('active');
+            });
+        });
+        
+        // Cambiar color de fondo
+        document.querySelectorAll('.color-option[data-bg]').forEach(option => {
+            option.addEventListener('click', () => {
+                const color = option.getAttribute('data-bg');
+                document.documentElement.style.setProperty('--light', color);
+                localStorage.setItem('bgColor', color);
+                document.getElementById('custom-bg-color').value = color;
+                
+                document.querySelectorAll('.color-option[data-bg]').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                option.classList.add('active');
+            });
+        });
+        
+        // Selector de color personalizado - Fondo
+        document.getElementById('custom-bg-color').addEventListener('input', function() {
+            const color = this.value;
+            document.documentElement.style.setProperty('--light', color);
+            localStorage.setItem('bgColor', color);
+            
+            document.querySelectorAll('.color-option[data-bg]').forEach(opt => {
+                opt.classList.remove('active');
+            });
+        });
+        
+        // Cambiar fondo del hero
+        document.querySelectorAll('.bg-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const bg = option.getAttribute('data-hero-bg');
+                document.documentElement.style.setProperty('--hero-bg', bg);
+                localStorage.setItem('heroBg', bg);
+                
+                document.querySelectorAll('.bg-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                option.classList.add('active');
+            });
+        });
+        
+        // Cambiar fuente
+        document.getElementById('font-select').addEventListener('change', function() {
+            const font = this.value;
+            document.documentElement.style.setProperty('--font-main', font);
+            document.documentElement.style.setProperty('--font-heading', font);
+            localStorage.setItem('fontFamily', font);
+        });
+        
+        // Cambiar tamaño de fuente
+        const fontSizeSlider = document.getElementById('font-size-slider');
+        const fontSizeValue = document.getElementById('font-size-value');
+        
+        fontSizeSlider.addEventListener('input', function() {
+            const size = this.value;
+            document.documentElement.style.setProperty('--font-size-base', `${size}px`);
+            fontSizeValue.textContent = `${size}px`;
+            localStorage.setItem('fontSize', size);
+        });
+        
+        // Cambiar espaciado
+        const spacingSlider = document.getElementById('spacing-slider');
+        const spacingValue = document.getElementById('spacing-value');
+        
+        spacingSlider.addEventListener('input', function() {
+            const space = this.value;
+            document.documentElement.style.setProperty('--spacing', `${space}rem`);
+            spacingValue.textContent = `${space}rem`;
+            localStorage.setItem('spacing', space);
+        });
+        
+        // Cambiar radio de bordes
+        const borderRadiusSlider = document.getElementById('border-radius-slider');
+        const borderRadiusValue = document.getElementById('border-radius-value');
+        
+        borderRadiusSlider.addEventListener('input', function() {
+            const radius = this.value;
+            document.documentElement.style.setProperty('--border-radius', `${radius}px`);
+            borderRadiusValue.textContent = `${radius}px`;
+            localStorage.setItem('borderRadius', radius);
+        });
+        
+        // Cambiar imagen hero desde URL
+        document.getElementById('edit-hero-img').addEventListener('change', function() {
+            const imgUrl = this.value;
+            if (imgUrl) {
+                document.getElementById('hero-img').src = imgUrl;
+                localStorage.setItem('heroImg', imgUrl);
+            }
+        });
+        
+        // Restablecer imagen hero
+        document.getElementById('reset-hero-img').addEventListener('click', function() {
+            const defaultImg = 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+            document.getElementById('hero-img').src = defaultImg;
+            document.getElementById('edit-hero-img').value = defaultImg;
+            localStorage.setItem('heroImg', defaultImg);
+        });
+        
+        // Cambiar imagen about desde URL
+        document.getElementById('edit-about-img').addEventListener('change', function() {
+            const imgUrl = this.value;
+            if (imgUrl) {
+                document.getElementById('about-img').src = imgUrl;
+                localStorage.setItem('aboutImg', imgUrl);
+            }
+        });
+        
+        // Restablecer imagen about
+        document.getElementById('reset-about-img').addEventListener('click', function() {
+            const defaultImg = 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80';
+            document.getElementById('about-img').src = defaultImg;
+            document.getElementById('edit-about-img').value = defaultImg;
+            localStorage.setItem('aboutImg', defaultImg);
+        });
+        
+        // Carga de imágenes desde archivo
+        function handleImageUpload(input, previewId, storageKey) {
+            input.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const preview = document.getElementById(previewId);
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                        
+                        // Guardar como data URL para persistencia
+                        localStorage.setItem(storageKey, e.target.result);
+                        
+                        // Actualizar la imagen correspondiente en la página
+                        if (storageKey === 'uploadedHeroImg') {
+                            document.getElementById('hero-img').src = e.target.result;
+                        } else if (storageKey === 'uploadedAboutImg') {
+                            document.getElementById('about-img').src = e.target.result;
+                        } else if (storageKey === 'uploadedLogo') {
+                            // Aquí podrías actualizar un logo si tuvieras uno
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+        
+        // Configurar carga de imágenes
+        handleImageUpload(document.getElementById('upload-hero-img'), 'preview-hero-img', 'uploadedHeroImg');
+        handleImageUpload(document.getElementById('upload-about-img'), 'preview-about-img', 'uploadedAboutImg');
+        handleImageUpload(document.getElementById('upload-logo'), 'preview-logo', 'uploadedLogo');
+        
+        // Cargar imágenes subidas previamente si existen
+        const uploadedHeroImg = localStorage.getItem('uploadedHeroImg');
+        if (uploadedHeroImg) {
+            document.getElementById('hero-img').src = uploadedHeroImg;
+            document.getElementById('preview-hero-img').src = uploadedHeroImg;
+            document.getElementById('preview-hero-img').style.display = 'block';
+        }
+        
+        const uploadedAboutImg = localStorage.getItem('uploadedAboutImg');
+        if (uploadedAboutImg) {
+            document.getElementById('about-img').src = uploadedAboutImg;
+            document.getElementById('preview-about-img').src = uploadedAboutImg;
+            document.getElementById('preview-about-img').style.display = 'block';
+        }
+        
+        // Guardar cambios de texto
+        saveBtn.addEventListener('click', function() {
+            // Guardar todos los textos editables
+            document.querySelectorAll('.text-editor').forEach(editor => {
+                if (editor.type !== 'color' && editor.type !== 'range') {
+                    const id = editor.id.replace('edit-', '');
+                    const value = editor.value;
+                    
+                    localStorage.setItem(id, value);
+                    
+                    // Actualizar el elemento correspondiente en la página
+                    const targetElement = document.getElementById(id);
+                    if (targetElement) {
+                        if (targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA') {
+                            targetElement.value = value;
+                        } else {
+                            targetElement.textContent = value;
+                        }
+                    }
+                    
+                    // Caso especial para el logo
+                    if (id === 'logo') {
+                        document.getElementById('logo-text').textContent = value;
+                    }
+                }
+            });
+            
+            alert('Todos los cambios han sido guardados correctamente.');
+        });
+        
+        // Descargar HTML
+        downloadBtn.addEventListener('click', function() {
+            // Clonar el documento actual
+            const docClone = document.documentElement.cloneNode(true);
+            
+            // Eliminar elementos del personalizador
+            const customizerElements = docClone.querySelectorAll('.customizer, .customizer-toggle');
+            customizerElements.forEach(el => el.remove());
+            
+            // Corregir estilos in-line
+            const bodyClone = docClone.querySelector('body');
+            if (bodyClone) {
+                bodyClone.style.marginLeft = '0';
+            }
+            
+            // Crear HTML como string
+            const cleanedHtml = '<!DOCTYPE html>\n' + docClone.outerHTML;
+            
+            // Crear blob para descargar
+            const blob = new Blob([cleanedHtml], { type: 'text/html' });
+            
+            // Crear enlace de descarga
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'web_personalizada.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(a.href);
+            
+            alert('La web personalizada se ha descargado correctamente.');
+        });
+        
+        // Restablecer estilos
+        resetBtn.addEventListener('click', function() {
+            if (confirm('¿Estás seguro de que quieres restablecer todos los cambios? Se borrarán todas tus personalizaciones.')) {
+                localStorage.clear();
+                location.reload();
+            }
+        });
+        
+ 
+    
+    </script>
+</body>
+</html>
